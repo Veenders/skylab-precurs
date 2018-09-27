@@ -72,22 +72,77 @@ for(var i=0;i<myCompleteNameArray.length;i++){
 }
 console.log("My initials are "+initialsArray.join("."));
 
-//Arrays - Ejercicio E
+//Arrays - Ejercicio F
 var myAge=40;
 var myPersonalData = [myName,lastName,myAge];
 console.log("My name is "+myPersonalData[0]+' and I\'m '+myPersonalData[2]+' old.');
 
-//Arrays - Ejercicio F
+//Arrays - Ejercicio G
 function CityAdd(city){
     myPersonalData.push(city);
 }
 CityAdd('Granollers');
 console.log('City added to array! => '+myPersonalData);
 
-//Array - Ejercicio G
+//Array - Ejercicio H
 function CityRemove(city){
     var index = myPersonalData.indexOf(city);
-    delete myPersonalData[index];
+    delete myPersonalData.splice(index,1);
 }
 CityRemove('Granollers');
 console.log('City removed from array! => '+myPersonalData);
+
+//Array - Ejercicio J
+CityRemove(myName);
+console.log('Name removed from array! => '+myPersonalData);
+
+//Array - Ejercicio K
+myPersonalData.unshift(myName);
+console.log('Name added to array! => '+myPersonalData);
+
+//Array - Ejercicio L
+var numbers=[0,1,2,3,4,5,6,7,8,9,10];
+function multiple(num){
+    return num*this;
+}
+console.log(numbers.map(multiple,2));
+
+//Array - Ejercicio L1
+console.log(numbers.map(multiple,3));
+
+//Array - Ejercicio M
+console.log(numbers.sort(function(a,b){return b-a}));
+
+//Array - Ejercicio N
+function ContarLetras(array,letra){
+    var index=0;
+    for(var i=0;i<array.length;i++){
+        if(array[i]==letra){
+            index++;
+        }
+    }
+    return index;
+}
+var resultContar=[];
+for(var i=0;i<myCompleteNameArray.length;i++){
+    var contador=ContarLetras(myCompleteNameArray,myCompleteNameArray[i]);
+    if(contador>1){
+        resultContar[myCompleteNameArray[i]]=contador;
+    }  
+    
+}
+console.log(resultContar);
+
+//Array - Ejercicio N1
+var resultName=[]
+for(var i=0;i<myCompleteNameArray.length;i++){
+    var contador=ContarLetras(myCompleteNameArray,myCompleteNameArray[i]);
+    if(contador==1){
+        resultName.push(myCompleteNameArray[i]);
+    }  
+}
+console.log(myCompleteNameArray.join('')+", the Letters => "+resultName+" are not repeated, the name is "+resultName.join(''));
+
+//Numbers - Ejercicio A
+var date = new Date();
+console.log(date);
