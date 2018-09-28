@@ -1,6 +1,6 @@
 function sum(numbers) {
     var result = 0;
-    for (var i = 1; i < numbers.length; i++) {
+    for (var i = 0; i < numbers.length; i++) {
         result += numbers[i];
     }
     result = result % 1 == 0 ? result : result.toFixed(3);
@@ -9,8 +9,8 @@ function sum(numbers) {
 
 function rest(numbers) {
     var result = 0;
-    for (var i = 1; i < numbers.length; i++) {
-        result = i == 1 ? numbers[i] : result - numbers[i];
+    for (var i = 0; i < numbers.length; i++) {
+        result = i == 0 ? numbers[i] : result - numbers[i];
     }
     result = result % 1 == 0 ? result : result.toFixed(3);
     return result;
@@ -18,7 +18,7 @@ function rest(numbers) {
 
 function mult(numbers) {
     var result = 1;
-    for (var i = 1; i < numbers.length; i++) {
+    for (var i = 0; i < numbers.length; i++) {
         result = result * numbers[i];
     }
     result = result % 1 == 0 ? result : result.toFixed(3);
@@ -27,8 +27,8 @@ function mult(numbers) {
 
 function div(numbers) {
     var result = 1;
-    for (var i = 1; i < numbers.length; i++) {
-        result = i == 1 ? numbers[i] : result / numbers[i];
+    for (var i = 0; i < numbers.length; i++) {
+        result = i == 0 ? numbers[i] : result / numbers[i];
     }
     result = result % 1 == 0 ? result : result.toFixed(3);
     return result;
@@ -39,18 +39,26 @@ function calculator(operation) {
         return operation * operation;
     }
     var resultphrase = "";
+    var args = [];
+    if (typeof arguments[1] == "object") {
+        var args = arguments[1];
+    } else {
+        for (var i = 1; i < arguments.length; i++) {
+            args[i - 1] = arguments[i];
+        }
+    }
     var numbers = [];
     switch (operation) {
         case "+":
         case "sum":
         case "sumar":
             resultphrase = "The sum of ";
-            for (var i = 1; i < arguments.length; i++) {
-                numbers[i] = arguments[i];
-                if (i + 1 == arguments.length) {
-                    resultphrase += arguments[i];
+            for (var i = 0; i < args.length; i++) {
+                numbers[i] = args[i];
+                if (i + 1 == args.length) {
+                    resultphrase += args[i];
                 } else {
-                    resultphrase += arguments[i] + "+";
+                    resultphrase += args[i] + "+";
                 }
             }
             resultphrase = numbers.length == 0 ? "No hay ningún valor para realizar la suma" : resultphrase + " is " + sum(numbers);
@@ -60,12 +68,12 @@ function calculator(operation) {
         case "rest":
         case "restar":
             resultphrase = "The rest of ";
-            for (var i = 1; i < arguments.length; i++) {
-                numbers[i] = arguments[i];
-                if (i + 1 == arguments.length) {
-                    resultphrase += arguments[i];
+            for (var i = 0; i < args.length; i++) {
+                numbers[i] = args[i];
+                if (i + 1 == args.length) {
+                    resultphrase += args[i];
                 } else {
-                    resultphrase += arguments[i] + "-";
+                    resultphrase += args[i] + "-";
                 }
             }
             resultphrase = numbers.length == 0 ? "No hay ningún valor para realizar la resta" : resultphrase + " is " + rest(numbers);
@@ -75,12 +83,12 @@ function calculator(operation) {
         case "mult":
         case "multiplicar":
             resultphrase = "The multiplication of ";
-            for (var i = 1; i < arguments.length; i++) {
-                numbers[i] = arguments[i];
-                if (i + 1 == arguments.length) {
-                    resultphrase += arguments[i];
+            for (var i = 0; i < args.length; i++) {
+                numbers[i] = args[i];
+                if (i + 1 == args.length) {
+                    resultphrase += args[i];
                 } else {
-                    resultphrase += arguments[i] + "*";
+                    resultphrase += args[i] + "*";
                 }
             }
             resultphrase = numbers.length == 0 ? "No hay ningún valor para realizar la multiplicación" : resultphrase + " is " + mult(numbers);
@@ -90,12 +98,12 @@ function calculator(operation) {
         case "div":
         case "division":
             resultphrase = "The division of ";
-            for (var i = 1; i < arguments.length; i++) {
-                numbers[i] = arguments[i];
-                if (i + 1 == arguments.length) {
-                    resultphrase += arguments[i];
+            for (var i = 0; i < args.length; i++) {
+                numbers[i] = args[i];
+                if (i + 1 == args.length) {
+                    resultphrase += args[i];
                 } else {
-                    resultphrase += arguments[i] + "/";
+                    resultphrase += args[i] + "/";
                 }
             }
             resultphrase = numbers.length == 0 ? "No hay ningún valor para realizar la multiplicación" : resultphrase + " is " + div(numbers);
@@ -105,6 +113,7 @@ function calculator(operation) {
             return "Operació Incorrecte";
     }
 }
+var cont = "y";
 console.log(calculator(3));
 console.log(calculator("+", 5, 3));
 console.log(calculator("sum", 5, 3));
@@ -137,3 +146,17 @@ console.log(calculator("restar"));
 console.log(calculator("+"));
 console.log(calculator("*"));
 console.log(calculator("/"));
+while (cont == "y") {
+    cont = prompt("Do you want to continue?(y/n)");
+    if (cont == "y") {
+        var respuesta = prompt("Put the operation and the numbers (op,num1,num2,num3,...");
+        var operations = respuesta.split(",");
+        var operator = operations.shift();
+        var numbers = operations.map(function(i) {
+            return parseInt(i, 10);
+        });
+        console.log(calculator(operator, numbers));
+    } else {
+        console.log("Thanks for using calculator");
+    }
+}
