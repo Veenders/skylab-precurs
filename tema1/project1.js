@@ -40,11 +40,11 @@ function calculator(operation) {
     }
     var resultphrase = "";
     var args = [];
-    if (typeof arguments[1] == "object") {
-        var args = arguments[1];
-    } else {
-        for (var i = 1; i < arguments.length; i++) {
-            args[i - 1] = arguments[i];
+    for (var i = 1; i < arguments.length; i++) {
+        if (typeof arguments[i] == "object" || typeof arguments[i] == "array") {
+            args = args.concat(arguments[i]);
+        } else {
+            args.push(arguments[i]);
         }
     }
     var numbers = [];
@@ -106,7 +106,7 @@ function calculator(operation) {
                     resultphrase += args[i] + "/";
                 }
             }
-            resultphrase = numbers.length == 0 ? "No hay ningún valor para realizar la multiplicación" : resultphrase + " is " + div(numbers);
+            resultphrase = numbers.length == 0 ? "No hay ningún valor para realizar la división" : resultphrase + " is " + div(numbers);
             return resultphrase;
             break;
         default:
@@ -116,7 +116,7 @@ function calculator(operation) {
 var cont = "y";
 console.log(calculator(3));
 console.log(calculator("+", 5, 3));
-console.log(calculator("sum", 5, 3));
+console.log(calculator("sum", 5, 3, [3, 5, 6]));
 console.log(calculator("sumar", 5, 3));
 console.log(calculator("+", 5, 3, 5.5));
 console.log(calculator("sum", 5, 3, 5));
