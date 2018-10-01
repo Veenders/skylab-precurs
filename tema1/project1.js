@@ -160,3 +160,57 @@ while (cont == "y") {
         console.log("Thanks for using calculator");
     }
 }
+/* Feedback:
+     - Incorrect: La calculadora ha de tenir la posibilitat de només introduir un numero
+        Punts de millora: Molt de codi repetit (totes les funcions de sumar, multiplicar, dividir, etc)
+        con exactamente igual només cambia un operador! Poso un exemple a vall de només la lógica de la
+        calculadora de com podriem simplificar y treure molt de codi que hem duplicat.
+     - Codi innecessari: Si fem servir un switch case y fem un return en cada case no es necessari fer un break,
+       el return ja para la execució del switch i retorna un valor.
+     - No fer us de dobles == fer servir ===.
+*/
+
+// Posible solució de la logica de operacions
+  
+  function calculator() {
+    var functionByOperators = {
+        '+': function (a,b) {return a + b},
+        '-': function (a,b) {return a - b},
+        '/': function (a,b) {return a / b},
+        '*': function (a,b) {return a * b},
+      }
+    var availableOperators = ['+','-','*','/']
+    var input = Array.from(arguments)
+    var checkedOperator = availableOperators.includes(input[0])
+    var numbers = input.slice(1)
+    var checkedNum = []
+
+    numbers.forEach(function(num) {
+        checkedNum.push(!isNaN(num))
+    });
+
+    var areValidNums = !checkedNum.includes(false) 
+    
+    if(input.length === 1 && areValidNums) {
+      return Math.sqrt(input[0])
+    } else if(numbers.length > 1 && areValidNums && checkedOperator) {
+        var result;
+        for(var i = 0; i < numbers.length; i++) {
+            if(numbers[i + 1]) {
+                result = functionByOperators[input[0]](numbers[i], numbers[i + 1])
+            } else {
+                result = functionByOperators[input[0]](result, numbers[i])
+            }
+        }
+        return result % 2 === 0 ? result : result.toFixed(2)
+    } else {
+      return new Error('Error input is not correct')
+    }
+  }
+  
+  calculator('*', 2, 'ñ')
+  calculator('+', 2,  2, 4)
+  calculator('-', 2,  2, 2)
+  calculator('/', 2,  2, 2)
+  calculator('*', 2,  2, 2)
+

@@ -79,3 +79,12 @@ function ConditionalMessage(name) {
 }
 console.log(ConditionalMessage(myName));
 console.log(ConditionalMessage("Pepe"));
+
+/* Feedback:
+    - De nou, tenir en compte el doble igual i fer servir en el seu lloc triple igual.
+    - D'altra banda, m'agradaria que no fesiu servir codi d'altres exercicis, és a dir,
+    en aquests es preferible que repetiu codi d'altres exercicis ja que així puc veure la progressió
+    i al mateix temps com incorporeu noves funcions a existents i la seva encapsulació.
+
+    Bona feina! 😁
+*/

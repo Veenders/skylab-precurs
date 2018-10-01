@@ -89,3 +89,18 @@ for(var i=0;i<array.length;i++){
         console.log(array[i][j]);
     }
 }
+
+/* Feedback:
+    Corregir:
+     - No fer us de == usar en lloc d'aquest === ja que el doble igual no te en compte el format, és a dir, si
+     comparem un number amb una string ex (3 == '3') això ens donarà true, intentar fer servir sempre el triple igual
+     ja que estarem comparant el mateix tipus de valor primitiu.
+     - D'altre banda a mode de fer més llegible el codi separar les asignacions, exemple:
+     for(var i = 0; i < array.length; i++){
+        for(var j = 0; j < array[i].length; j++){
+            console.log(array[i][j]);
+        }
+      }
+      Això fa molt mes llegible el codi.
+      En general bona feina!! 😁
+*/
