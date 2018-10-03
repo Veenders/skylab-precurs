@@ -123,22 +123,18 @@ console.log(calculator("*", 5, 3));
 console.log(calculator("*", 5, 3, 2));
 console.log(calculator("/", 5, 3));
 console.log(calculator("/", 5, 3, 2));
-console.log(calculator("x"));
+/*console.log(calculator("x"));
 console.log(calculator("y", 5, 3));
 console.log(calculator("restar"));
 console.log(calculator("+"));
 console.log(calculator("*"));
 console.log(calculator("/"));
+*/
 while (cont == "y") {
     cont = prompt("Do you want to continue?(y/n)");
     if (cont == "y") {
         var respuesta = prompt("Put the operation and the numbers (op,num1,num2,num3,...");
-        var operations = respuesta.split(",");
-        var operator = operations.shift();
-        var numbers = operations.map(function(i) {
-            return parseInt(i, 10);
-        });
-        console.log(calculator(operator, numbers));
+        console.log(calculator(respuesta.split(",")));
     } else {
         console.log("Thanks for using calculator");
     }
@@ -164,26 +160,26 @@ while (cont == "y") {
         '*': function (a,b) {return a * b},
       }
     var availableOperators = ['+','-','*','/']
-    var input = Array.from(arguments)
+    var args = Array.from(arguments)
+    var input = args.flat()
     var checkedOperator = availableOperators.includes(input[0])
     var numbers = input.slice(1)
     var checkedNum = []
-
     numbers.forEach(function(num) {
         checkedNum.push(!isNaN(num))
     });
 
     var areValidNums = !checkedNum.includes(false) 
     
-    if(input.length === 1 && areValidNums) {
+    if(input.length === 1 && !isNaN(input[0])) {
       return Math.sqrt(input[0])
     } else if(numbers.length > 1 && areValidNums && checkedOperator) {
         var result;
         for(var i = 0; i < numbers.length; i++) {
             if(i==0){
-                result=numbers[i]
+                result=parseFloat(numbers[i])
             } else {
-                result = functionByOperators[input[0]](result, numbers[i])
+                result = functionByOperators[input[0]](result, parseFloat(numbers[i]))
             }
         }
         return result % 2 === 0 ? result : result.toFixed(2)
