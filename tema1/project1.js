@@ -34,7 +34,7 @@ function div(numbers) {
     return result;
 }
 
-function calculator(operation) {
+function calculatorc(operation) {
     if (typeof operation == "number") {
         return operation * operation;
     }
@@ -116,30 +116,13 @@ function calculator(operation) {
 var cont = "y";
 console.log(calculator(3));
 console.log(calculator("+", 5, 3));
-console.log(calculator("sum", 5, 3, [3, 5, 6]));
-console.log(calculator("sumar", 5, 3));
 console.log(calculator("+", 5, 3, 5.5));
-console.log(calculator("sum", 5, 3, 5));
-console.log(calculator("sumar", 5, 3, 5));
 console.log(calculator("-", 5, 3));
-console.log(calculator("rest", 5, 3));
-console.log(calculator("restar", 5, 3));
 console.log(calculator("-", 5, 3, 1));
-console.log(calculator("rest", 5, 3, 1));
-console.log(calculator("restar", 5, 3, 1));
 console.log(calculator("*", 5, 3));
-console.log(calculator("mult", 5, 3));
-console.log(calculator("multiplicar", 5, 3));
 console.log(calculator("*", 5, 3, 2));
-console.log(calculator("mult", 5, 3, 2));
-console.log(calculator("multiplicar", 5, 3, 2));
 console.log(calculator("/", 5, 3));
-console.log(calculator("div", 5, 3));
-console.log(calculator("division", 5, 3));
 console.log(calculator("/", 5, 3, 2));
-console.log(calculator("div", 5, 3, 2));
-console.log(calculator("division", 5, 3, 2));
-console.log(calculator("hola"));
 console.log(calculator("x"));
 console.log(calculator("y", 5, 3));
 console.log(calculator("restar"));
@@ -160,6 +143,7 @@ while (cont == "y") {
         console.log("Thanks for using calculator");
     }
 }
+
 /* Feedback:
      - Incorrect: La calculadora ha de tenir la posibilitat de només introduir un numero
         Punts de millora: Molt de codi repetit (totes les funcions de sumar, multiplicar, dividir, etc)
@@ -196,8 +180,8 @@ while (cont == "y") {
     } else if(numbers.length > 1 && areValidNums && checkedOperator) {
         var result;
         for(var i = 0; i < numbers.length; i++) {
-            if(numbers[i + 1]) {
-                result = functionByOperators[input[0]](numbers[i], numbers[i + 1])
+            if(i==0){
+                result=numbers[i]
             } else {
                 result = functionByOperators[input[0]](result, numbers[i])
             }
@@ -208,9 +192,9 @@ while (cont == "y") {
     }
   }
   
-  calculator('*', 2, 'ñ')
-  calculator('+', 2,  2, 4)
-  calculator('-', 2,  2, 2)
-  calculator('/', 2,  2, 2)
-  calculator('*', 2,  2, 2)
+ console.log(calculator('*', 2, 'ñ'));
+ console.log(calculator('+', 2,  2, 4));
+ console.log(calculator('-', 2,  2, 2));
+ console.log(calculator('/', 2,  2, 2));
+ console.log(calculator('*', 2,  2, 2));
 
