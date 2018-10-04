@@ -74,10 +74,32 @@ avenger = addProperties(avenger,45,"USA","CEO","Engineering");
 console.log(returnFull(avenger));
 
 //i) Crea un constructor de objetos llamado "Avenger", al cual le pasarás ciertos parametros, creando una instancia del objeto con las propiedades de nuestro objeto creado. (Échale un ojo a la referencia de abajo.)
+function Avenger(fullName, classRoom, city, job, studies, markAv) {
+    this.fullName = fullName;
+    this.classRoom = classRoom;
+    this.city = city;
+    this.job= job;
+    this.studies= studies;
+    this.markAv = markAv;
+    //k) Crea una propiedad del objeto que liste automáticamente los valores de la instancia. - Continua más abajo.
+    this.ListProperties = function(){
+        properties = "";
+        for(prop in this){
+            properties += prop+" => "+this[prop]+"\n";
+        }
+        return properties;
+    }
+}
+var ironman = new Avenger("Tony Stark", "IX", "New York", "CEO", "Engineering",97);
+console.log(returnFull(ironman));
 
 //j) Crea otro objeto y imprime sus propiedades por pantalla.
+var hulk = new Avenger("Robert Bruce Banner","IV","Sakaar","Warrior","Physicist",140);
+console.log(returnFull(hulk));
 
 //k) Crea una propiedad del objeto que liste automáticamente los valores de la instancia.
+console.log("Ejercicio K");
+console.log(ironman.ListProperties());
 
 //l) Ahora, crea una función que solo liste los nombres de los objetos instanciados
 
