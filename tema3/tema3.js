@@ -1,20 +1,20 @@
-var avenger = { 
-    name : "Tony", 
-    class : "VII", 
-    id : 1 
+var avenger = {
+    name: "Tony",
+    class: "VII",
+    id: 1
 };
 
 //a) Escribe una función que liste los nombres de propiedad del objeto (Puedes usar el objeto creado más arriba)
-function showProperties(object){
-    for(prop in object){
+function showProperties(object) {
+    for (prop in object) {
         console.log(prop);
     }
 }
 showProperties(avenger);
 
 //b) Ahora, crea una función que liste solo los valores de las propiedades.
-function showValues(object){
-    for(prop in object){
+function showValues(object) {
+    for (prop in object) {
         console.log(object[prop]);
     }
 }
@@ -30,9 +30,10 @@ showProperties(avenger);
 
 //e) Añade una nueva propiedad, por ejemplo city y dale un valor, asegura los cambios solo imprimiendo esa nueva propiedad.
 avenger.city = "Nueva York";
-function showFull(object){
-    for(prop in object){
-        console.log(prop+" => "+object[prop]);
+
+function showFull(object) {
+    for (prop in object) {
+        console.log(prop + " => " + object[prop]);
     }
 }
 showFull(avenger);
@@ -41,34 +42,34 @@ showFull(avenger);
 console.log(Object.keys(avenger).length);
 
 //g) Cambia la propiedad name por fullName.
-function changeproperty(object, property, newprop){
-    object[newprop]=object[property];
+function changeproperty(object, property, newprop) {
+    object[newprop] = object[property];
     delete object[property];
     return object;
 }
-avenger = changeproperty(avenger,"name","fullName");
+avenger = changeproperty(avenger, "name", "fullName");
 
 //g1) Asegura los cambios.
 showFull(avenger);
 
 //h) Lista todas las propiedades del objeto a través de un console.log()
-function returnFull(object){
+function returnFull(object) {
     properties = "";
-    for(prop in object){
-        properties += prop+" => "+object[prop]+"\n";
+    for (prop in object) {
+        properties += prop + " => " + object[prop] + "\n";
     }
     return properties;
 }
 console.log(returnFull(avenger));
 //h1) Añade más propiedades al objeto, como... markAverage, country, job, studies...
-function addProperties(object, markAverage, country, job, studies){
+function addProperties(object, markAverage, country, job, studies) {
     object.markAvegarage = markAverage;
     object.country = country;
     object.job = job;
     object.studies = studies;
     return object;
 }
-avenger = addProperties(avenger,45,"USA","CEO","Engineering");
+avenger = addProperties(avenger, 45, "USA", "CEO", "Engineering");
 
 //h2) Asegura los cambios volviendo a listar los valores del objeto
 console.log(returnFull(avenger));
@@ -78,28 +79,29 @@ function Avenger(fullName, classRoom, city, job, studies, markAv) {
     this.fullName = fullName;
     this.classRoom = classRoom;
     this.city = city;
-    this.job= job;
-    this.studies= studies;
+    this.job = job;
+    this.studies = studies;
     this.markAv = markAv;
     //k) Crea una propiedad del objeto que liste automáticamente los valores de la instancia. - Continua más abajo.
-    this.ListProperties = function(){
+    this.ListProperties = function() {
         properties = "";
-        for(prop in this){
-            properties += prop+" => "+this[prop]+"\n";
+        for (prop in this) {
+            properties += prop + " => " + this[prop] + "\n";
         }
         return properties;
     }
 }
-var ironman = new Avenger("Tony Stark", "IX", "New York", "CEO", "Engineering",97);
+var ironman = new Avenger("Tony Stark", "IX", "New York", "CEO", "Engineering", 97);
 console.log(returnFull(ironman));
 
 //j) Crea otro objeto y imprime sus propiedades por pantalla.
-var hulk = new Avenger("Robert Bruce Banner","IV","Sakaar","Warrior","Physicist",140);
+var hulk = new Avenger("Robert Bruce Banner", "IV", "Sakaar", "Warrior", "Physicist", 140);
 console.log(returnFull(hulk));
 
 //k) Crea una propiedad del objeto que liste automáticamente los valores de la instancia.
 console.log("Ejercicio K");
 console.log(ironman.ListProperties());
+
 
 //l) Ahora, crea una función que solo liste los nombres de los objetos instanciados
 
