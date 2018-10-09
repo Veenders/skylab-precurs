@@ -86,29 +86,92 @@ function Avenger(fullName, classRoom, city, job, studies, markAv) {
     this.ListProperties = function() {
         properties = "";
         for (prop in this) {
-            properties += prop + " => " + this[prop] + "\n";
+            if(typeof this[prop] != "function"){
+                properties += prop + " => " + this[prop] + "\n";
+            }
         }
         return properties;
     }
+    //l) Ahora, crea una función que solo liste los nombres de los objetos instanciados
+    this.getName = function(){
+        return "My name is "+this.fullName;
+    }
 }
-var ironman = new Avenger("Tony Stark", "IX", "New York", "CEO", "Engineering", 97);
+var ironman = new Avenger("Tony Stark", "I", "New York", "CEO", "Engineering", 97);
 console.log(returnFull(ironman));
 
 //j) Crea otro objeto y imprime sus propiedades por pantalla.
-var hulk = new Avenger("Robert Bruce Banner", "IV", "Sakaar", "Warrior", "Physicist", 140);
+var hulk = new Avenger("Robert Bruce Banner", "I", "Sakaar", "Warrior", "Physicist", 140);
 console.log(returnFull(hulk));
 
 //k) Crea una propiedad del objeto que liste automáticamente los valores de la instancia.
 console.log("Ejercicio K");
 console.log(ironman.ListProperties());
-
+console.log(hulk.ListProperties());
 
 //l) Ahora, crea una función que solo liste los nombres de los objetos instanciados
-
+var avengers = [ironman,hulk];
+avengers.forEach(function(item){
+    console.log(item.getName());
+})
 //m) Crea varios objetos con las mismas propiedades, como por ejemplo la ciudad, crea una función para que solo liste los nombres de los Avengers que sean de la misma ciudad y cuantos hay.
+var spiderman = new Avenger("Peter Parker", "IV","New York", "Journalist", "High School",80);
+avengers.push(spiderman);
+var thor = new Avenger("Thor Odin's son", "I", "Asgard","God","Warrior",150);
+avengers.push(thor);
+var capitanAmerica = new Avenger('Steve Rogers',"I","New York","Soldier","High School",105);
+avengers.push(capitanAmerica);
+
+function countProperties (arrayObjects,property) {
+    var result ={};
+    var objectProperty;
+    arrayObjects.forEach(function(object) {
+		objectProperty = object[property];
+		!result[objectProperty] ? (result[objectProperty]) = 1 : (result[objectProperty] += 1);
+	});
+	 return result
+}
+
+function avengersInCity(arrayObjects,city){
+    var count=0;
+    var names='';
+    var message='';
+    arrayObjects.forEach(function(object){
+        if(object.city.toLowerCase()===city.toLowerCase()){
+            count++;
+            names += object.fullName+', '
+            message = "Are "+count+" living in "+city+": "+names;
+        }
+    });
+    count === 0 ? message = "No Avengers Living in the city":message = message;
+    
+    return message;
+
+}
+console.log(countProperties(avengers,"city"));
+console.log(avengersInCity(avengers,"New York"));
+console.log(avengersInCity(avengers,"Asgard"));
+console.log(avengersInCity(avengers,"Granollers"));
 
 //n) Para acabar, créate a ti mismo y crea una función que recoja todas las markAv y muestre la media.
-
+var cvd = new Avenger("Carles Vila","IX","Granollers","Full Stack Developer","Multimedia",100);
+avengers.push(cvd);
+function avengersMedia(arrayObjects){
+    var result=0;
+    arrayObjects.forEach(function(object){
+        result += object.markAv;
+    });
+    result = result/arrayObjects.length;
+    return result;
+}
+console.log(avengersMedia(avengers));
 //ñ) Ahora, crea una funcion que recoja los avengers en parejas (será necesario que tengan un id, por comodidad al aparejarlos), es decir, de dos en dos, compare sus markAv y que muestre el mayor de ambos.
-
+function avengersMarks(arrayObjects){
+    objectCompare = {};
+    arrayObjects.forEach(function(object,i){
+        i===0 ? objectCompare = object : objectCompare.markAv <= object.markAv ? console.log(object.fullName+" have better or equal markAV than "+objectCompare.fullName) : console.log(objectCompare.fullName+" have better markAV than "+object.fullName);
+        objectCompare = object;
+    });
+}
+avengersMarks(avengers);
 //ñ1) Intenta crear las parejas de forma aleatoria.
