@@ -177,7 +177,7 @@ function avengersMarks(arrayObjects) {
 avengersMarks(avengers);
 //ñ1) Intenta crear las parejas de forma aleatoria.
 function randomComparation(arrayObjects) {
-    var arrayCopy = arrayObjects.map(function(item) { return item });
+    var arrayCopy = arrayObjects.slice();
     arrayCopy.sort(function(a, b) { return 0.5 - Math.random() });
     avengersMarks(arrayCopy);
 }
