@@ -319,7 +319,7 @@ console.log(RomanDecrypt(RomanCode2));
 function RomanEnDe(code) {
     var decoded = RomanCrypt(code);
     console.log("The coded word is: " + decoded);
-    console.log("The word decode is: " + RomanDecrypt(decoded));
+    console.log("The word decoded is: " + RomanDecrypt(decoded));
 }
 console.log("Ejercicio D3")
 RomanEnDe("SKYLAB");
@@ -327,11 +327,185 @@ RomanEnDe("SKYLAB");
 console.log("Ejercicio D4")
 RomanEnDe("SKYLABCODERS");
 //e) Crea un programa al que le introduces un número como parámetro del 0 al 100 y devuelve el número transformado a alfabeto normal, es decir:
-
+var units = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+var tens = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+var teens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+function construTens(numArray){
+    var word = tens[numArray[0]];
+    numArray[1] === 0?'':word+="-"+units[numArray[1]];
+    return word; 
+}
+function sayItWithWords(num){
+    var word="";
+    switch (true) {
+        case num == 0:
+            word = "zero";
+            break;
+        case num > 0 && num < 10:
+            word = units[num];
+            break;
+        case num > 9 && num < 20:
+            word = teens[num-10];
+            break;
+        case num > 19 && num < 100:
+            word = construTens(num.toString().split(""));
+            break;
+        case num === 100:
+            word = "one hundred";
+        default:
+            word = "Número no válido";
+    }
+    return word;
+}
+console.log(sayItWithWords(5));
+console.log(sayItWithWords(0));
+console.log(sayItWithWords(17));
+console.log(sayItWithWords(23));
+console.log(sayItWithWords(71));
 //e2) Ahora, el output debería ser capaz de, aparte de devolver el número traducido, devolver también los números por los que está formado:
-
+function construTensDesc(numArray){
+    var word = tens[numArray[0]];
+    numArray[1] === 0?'':word+="-"+units[numArray[1]];
+    var message = word+", "+tens[numArray[0]]+" + "+ units[numArray[1]];
+    return message; 
+}
+function sayItWithWordsDesc(num){
+    var word="";
+    switch (true) {
+        case num == 0:
+            word = "zero";
+            break;
+        case num > 0 && num < 10:
+            word = units[num];
+            break;
+        case num > 9 && num < 20:
+            word = teens[num-10]+", ten + "+units[num-10];
+            break;
+        case num > 19 && num < 100:
+            word = construTensDesc(num.toString().split(""));
+            break;
+        case num === 100:
+            word = "one hundred";
+        default:
+            word = "Número no válido";
+    }
+    return word;
+}
+console.log(sayItWithWordsDesc(5));
+console.log(sayItWithWordsDesc(0));
+console.log(sayItWithWordsDesc(17));
+console.log(sayItWithWordsDesc(23));
+console.log(sayItWithWordsDesc(71));
 //e3) Cambia tu programa para que acepte cualquier número entre 0 y 1000.
-
+function construHundreds(numArray){
+    var word= units[numArray[0]]+" hundred ";
+    if(numArray[1]<2){
+        numArray[1]==0?word+=unit[numArray[2]]:word+=teens[numArray[2]];
+    }else{
+        word += "and "+construTens([numArray[1],numArray[2]]);
+    }
+    return word;
+}
+function sayItWithWordsT(num){
+    var word="";
+    switch (true) {
+        case num == 0:
+            word = "zero";
+            break;
+        case num > 0 && num < 10:
+            word = units[num];
+            break;
+        case num > 9 && num < 20:
+            word = teens[num-10];
+            break;
+        case num > 19 && num < 100:
+            word = construTens(num.toString().split(""));
+            break;
+        case num > 99 && num < 1000:
+            word = construHundreds(num.toString().split(""));
+            break;
+        case num === 1000:
+            word = "one thousand";
+            break;
+        default:
+            word = "Número no válido";
+    }
+    return word;
+}
+console.log(sayItWithWordsT(5));
+console.log(sayItWithWordsT(1000));
+console.log(sayItWithWordsT(117));
+console.log(sayItWithWordsT(223));
+console.log(sayItWithWordsT(671));
 //f) Recibiendo el siguiente texto por parámetro a tu función... :
+var texto = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\nSed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur."
+function replaceElement(txt,elementor,elementfin){
+    var cont=true;
+    var newtext ="";
+    while(cont){
+        newtext = txt.toLowerCase().replace(elementor,elementfin);
+        newtext === txt?cont=false:txt=newtext;
+    }
+    return newtext;
+}
+function changeText(texto){
+    texto = replaceElement(texto,",","");
+    console.log(texto);
+    texto = replaceElement(texto,".",",");
+    console.log(texto);
+    texto = replaceElement(texto,"dolor","potato");
+    console.log(texto);
+    texto = replaceElement(texto,"lorem","tomato");
+    console.log(texto);
+    texto = replaceElement(texto,"labor","cucumber");
+    console.log(texto);
+    texto = replaceElement(texto,"consequatur","garlic");
+    console.log(texto);
+    texto = replaceElement(texto,"ipsum","onion");
+    console.log(texto);
 
+}
+changeText(texto);
 //f1) Añade una funcionalidad que cuente cuantos cambios/coincidencias ha encontrado de cada palabra, y te los muestre de una forma amigable para el usuario
+function replaceElementCount(txt,elementor,elementfin){
+    var cont=true;
+    var newtext = txt;
+    var count = 0;
+    txt.indexOf(elementor)=== -1?cont=false:"";
+    while(cont){
+        newtext = txt.toLowerCase().replace(elementor,elementfin);
+        newtext === txt?cont=false:txt=newtext;
+        count++;
+    }
+    return [newtext,count];
+}
+function textToReplace(elementor,elementfin){
+    this.elementor = elementor;
+    this.elementfin = elementfin;
+    this.count = 0;
+    this.setcount = function(count){
+        this.count = count;
+    }
+}
+var textsReplaces=[];
+function textsToReplace(){
+    textsReplaces.push(new textToReplace(",",""));
+    textsReplaces.push(new textToReplace(".",","));
+    textsReplaces.push(new textToReplace("dolor","potato"));
+    textsReplaces.push(new textToReplace("lorem","tomato"));
+    textsReplaces.push(new textToReplace("labor","cucumber"));
+    textsReplaces.push(new textToReplace("consequatur","garlic"));
+    textsReplaces.push(new textToReplace("ipsum","onion"));
+}
+function changeTextCount(texto){
+    var result=[];
+    textsReplaces.forEach(function(text){
+        result = replaceElementCount(texto,text.elementor,text.elementfin);
+        texto = result[0];
+        text.setcount(result[1]);
+        console.log("La sustitución de "+text.elementor+" por "+text.elementfin+" se ha realizado "+text.count+" veces y da el siguiente resultado: \n"+texto);
+    });
+}
+textsToReplace();
+console.log("Ejercicio F1");
+changeTextCount(texto);
