@@ -2,15 +2,12 @@ body{
     font-family: sans-serif;
     padding:0;
     margin: 0;
-    width: 100%;
-    background: yellow;
 }
 header{
     background-color: black;
     color: white;
     margin: 0;
     padding: 0.5em;
-    width: 100%;
 }
 header ul{
     list-style: none;
@@ -23,19 +20,65 @@ header li{
     padding: 0 1em;
     margin: 0;
 }
+header a{
+    color: white;
+    text-decoration: none;
+}
+header a:hover{
+    color: lightcyan;
+}
 aside{
     background: lightgrey;
-    display: inline-block;
-    height: 100%;
+    float: left;
+    min-height: 100vh;
     width: 20%;
     margin: 0;
+    padding: 0;
+}
+nav{
+    display: block;
+    margin: 0;
+    padding: 2em;
 }
 aside ul{
     list-style: none;
+    padding: 0.5em 0;
+}
+aside li{
+    padding: 0.5em 0;
+}
+aside a{
+    color: black;
+    text-decoration: none;
 }
 main{
-    display: float;
-    background: blue;
-    width:75%;
+    width:100%;
     margin: 0;
+}
+article{
+    display: flex;
+}
+.content{
+    width: 75%;
+    padding: 1em;
+}
+.content h1{
+    font-size: 1.5em;
+    color: lightseagreen;
+    font-style: normal;
+}
+.complement{
+    flex-grow: 1;
+}
+.ad{
+    width: 60%;
+    border: 2px solid lightgray;
+    margin: 1em;
+    text-align: center;
+}
+.ad1{
+    padding: 2em;
+}
+.ad2{
+    padding: 3em 2em;
 }
