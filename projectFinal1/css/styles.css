@@ -1,7 +1,36 @@
-body{
+body {
     font-family: sans-serif;
     padding: 3em;
     margin: 0 auto;
     width: 80%;
 }
 
+.calculator {
+    display: grid;
+    width: 30%;
+    margin: auto;
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: 100px 60px 60px 60px 60px 60px;
+}
+
+#pantalla {
+    grid-column: span 4;
+    background: black;
+    color: white;
+    font-size: 3em;
+    text-align: right;
+}
+
+.double {
+    grid-column: span 2;
+}
+
+input {
+    font-size: 1.5em;
+    border: 1px solid grey;
+}
+
+.operator {
+    background: orange;
+    color: white;
+}

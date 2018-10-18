@@ -1,4 +1,5 @@
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -6,23 +7,31 @@
     <title>Skylab - Tema 7</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
     <h1>Calculator</h1>
-    <input type="text" id="pantalla" value="0";
-    <input type="button" id="AC" click="LimpiarPantalla()" value="AC">
-    <input type="button" id="mem" value="MEM">
-    <input type="button" value="/">
-    <input type="button" value="9" click="AddNumber()">
-    <input type="button" value="8" click="AddNumber()">
-    <input type="button" value="7" click="AddNumber()">
-    <input type="button" value="*">
-    <input type="button" value="6" click="AddNumber()">
-    <input type="button" value="5" click="AddNumber()">
-    <input type="button" value="4" click="AddNumber()">
-    <input type="button" value="3" click="AddNumber()">
-    <input type="button" value="2" click="AddNumber()">
-    <input type="button" value="1" click="AddNumber()">
-    <input type="button" value="0" click="AddNumber()">
+    <div class="calculator">
+        <input type="text" id="pantalla" value="0">
+        <input type="button" class="double " id="AC" onclick="LimpiarPantalla()" value="AC">
+        <input type="button" id="mem" value="MEM">
+        <input type="button" value="/" class="operator" onclick="Calculator('/')">
+        <input type="button" value="7" onclick="AddNumber(7)">
+        <input type="button" value="8" onclick="AddNumber(8)">
+        <input type="button" value="9" onclick="AddNumber(9)">
+        <input type="button" value="*" class="operator" onclick="Calculator('*')">
+        <input type="button" value="4" onclick="AddNumber(4)">
+        <input type="button" value="5" onclick="AddNumber(5)">
+        <input type="button" value="6" onclick="AddNumber(6)">
+        <input type="button" value="-" class="operator" onclick="Calculator('-')">
+        <input type="button" value="1" onclick="AddNumber(1)">
+        <input type="button" value="2" onclick="AddNumber(2)">
+        <input type="button" value="3" onclick="AddNumber(3)">
+        <input type="button" value="+" class="operator" onclick="Calculator('+')">
+        <input type="button" value="0" onclick="AddNumber(0)" class="double">
+        <input type="button" value="," onclick="AddNumber('.')">
+        <input type="button" value="=" class="operator" onclick="Calculator('=')">
+    </div>
 </body>
 <script src="js/scripts.js"></script>
+
 </html>
