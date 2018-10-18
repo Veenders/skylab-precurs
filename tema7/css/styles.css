@@ -1,0 +1,30 @@
+body{
+    font-family: sans-serif;
+    padding: 3em;
+    margin: 0 auto;
+    width: 80%;
+}
+.style1{
+    font-size: 3em;
+    color: white;
+    background: black;
+    font-style: italic;
+}
+.style2{
+    font-size: 1.5em;
+    color:blue;
+    border: 2px solid blue;
+    border-radius: 5px;
+}
+.style3{
+    font-size: 1em;
+    color: red;
+    font-weight: bolder;
+}
+.style4{
+    font-size:0.8em;
+    text-transform: uppercase;
+    padding: 2em;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
