@@ -3,17 +3,28 @@ var maxnum = 10;
 var num1 = "";
 var num2 = "";
 var mem = "";
-var operator = "";
+var operation = "";
 var result = 0;
+var op=false;
 
 function AddNumber(num) {
     if (result == pantalla.value && result != 0) {
         pantalla.value = 0;
-        num1 = 0;
+        //num1 = "";
     }
     var Content = pantalla.value;
-    if (Content.length <= maxnum) {
-        Content == 0 ? pantalla.value = num : pantalla.value = Content + num;
+    if(num!="." || num=="." && Content.indexOf('.')==-1){
+        if (Content.length <= maxnum) {
+            Content == 0 ? pantalla.value = num : pantalla.value = Content + num;
+        }
+    }
+}
+function Memory(){
+    if(op){
+        pantalla.value=mem;
+    }else{
+        mem = pantalla.value;
+        pantalla.value = 0;
     }
 }
 
@@ -24,19 +35,21 @@ function Calculator(operator) {
         '/': function(a, b) { return a / b },
         '*': function(a, b) { return a * b },
     }
-    operator != "=" ? operation = operator : "";
     if (num1 === "") {
-        num1 = pantalla.value;
+        num1 = parseFloat(pantalla.value);
         pantalla.value = 0;
     } else {
-        num2 = pantalla.value;
+        num2 = parseFloat(pantalla.value);
     }
     if (num2 != "" && operator != "") {
-        result = functionByOperators[operation](parseFloat(num1), parseFloat(num2));
+        result = functionByOperators[operation](num1,num2);
         pantalla.value = result;
         num1 = result;
         num2 = "";
     }
+    operator!="="?op=true:op=false;
+    operator != "=" ? operation = operator : num1="";
+    //console.log("result: "+result+" - num1: "+num1+" num2: "+num2+"- operator: "+operator+" op: "+op+" operation: "+operation+" testResult: "+functionByOperators[operation](10,2));
 }
 
 function LimpiarPantalla() {
