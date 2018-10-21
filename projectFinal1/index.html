@@ -4,33 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Skylab - Tema 7</title>
+    <title>Skylab - Calculadora</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
-    <h1>Calculator</h1>
-    <div class="calculator">
-        <input type="text" id="pantalla" value="0">
-        <input type="button" class="double " id="AC" onclick="LimpiarPantalla()" value="AC">
-        <input type="button" id="mem" value="MEM" onclick="Memory()">
-        <input type="button" value="/" class="operator" onclick="Calculator('/')">
-        <input type="button" value="7" onclick="AddNumber(7)">
-        <input type="button" value="8" onclick="AddNumber(8)">
-        <input type="button" value="9" onclick="AddNumber(9)">
-        <input type="button" value="*" class="operator" onclick="Calculator('*')">
-        <input type="button" value="4" onclick="AddNumber(4)">
-        <input type="button" value="5" onclick="AddNumber(5)">
-        <input type="button" value="6" onclick="AddNumber(6)">
-        <input type="button" value="-" class="operator" onclick="Calculator('-')">
-        <input type="button" value="1" onclick="AddNumber(1)">
-        <input type="button" value="2" onclick="AddNumber(2)">
-        <input type="button" value="3" onclick="AddNumber(3)">
-        <input type="button" value="+" class="operator" onclick="Calculator('+')">
-        <input type="button" value="0" onclick="AddNumber(0)" class="double">
-        <input type="button" value="," onclick="AddNumber('.')">
-        <input type="button" value="=" class="operator" onclick="Calculator('=')">
-    </div>
+    <main>
+        <h1>Calculadora</h1>
+        <div class="instructions">
+            <h3>Instrucciones</h3>
+            <p>Al pulsar la tecla de memoria guardará el valor en pantalla a la memoria, excepto si es después de pulsar el botón de una operación, momento en el que nos devolverá el valor en memoria para poder realizar la operación deseada.</p>
+            <p>Si pulsamos el botón igual las operaciones ya no es acumulativa por lo que o bien guardamos el resultado en memoria o perderemos ese resultado, en el resto de operaciones estas son acumulativas</p>
+        </div>
+        <div class="calculator">
+            <input type="text" id="pantalla" value="0">
+            <input type="button" class="double " id="AC" onclick="LimpiarPantalla()" value="AC">
+            <input type="button" id="mem" value="MEM" onclick="Memory()">
+            <input type="button" value="/" class="operator" onclick="Calculator('/')">
+            <input type="button" value="7" onclick="AddNumber(7)">
+            <input type="button" value="8" onclick="AddNumber(8)">
+            <input type="button" value="9" onclick="AddNumber(9)">
+            <input type="button" value="*" class="operator" onclick="Calculator('*')">
+            <input type="button" value="4" onclick="AddNumber(4)">
+            <input type="button" value="5" onclick="AddNumber(5)">
+            <input type="button" value="6" onclick="AddNumber(6)">
+            <input type="button" value="-" class="operator" onclick="Calculator('-')">
+            <input type="button" value="1" onclick="AddNumber(1)">
+            <input type="button" value="2" onclick="AddNumber(2)">
+            <input type="button" value="3" onclick="AddNumber(3)">
+            <input type="button" value="+" class="operator" onclick="Calculator('+')">
+            <input type="button" value="0" onclick="AddNumber(0)" class="double">
+            <input type="button" value="," onclick="AddNumber('.')">
+            <input type="button" value="=" class="operator" onclick="Calculator('=')">
+        </div>
+    </main>
 </body>
 <script src="js/scripts.js"></script>
 
