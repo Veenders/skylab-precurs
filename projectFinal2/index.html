@@ -11,22 +11,24 @@
 <body>
     <main>
         <div id="start">
-            <h1>Bienvenidos al Juego de Pasapalabra</h1>
-            <div id="gameresult"></div>
-            <ul id="jugadores"></ul>
-            <div id="error2" class="err">Es necessario que introduzca algún valor como nombre<br /></div>
-            <div id="error" class="err">Es necessario Añadir Jugadores<br /></div>
-            <input type="text" name="jugador" id="jugador" onkeypress="keyStart(event)">
-            <input type="button" value="Añadir Jugador" onclick="AddPlayer()"><br />
-            <label for="timer">Tiempo por jugador:</label><input type="text" name="timer" id="timer" value="200"><br />
-            <input type="button" value="Empezar Juego" onclick="StartGame()">
-            <input type="button" value="Limpiar Jugadores" onclick="ClearPlayerList()">
-
+            <h1>Pasapalabra</h1>
+            <div id="gameresult">
+                <p>Bienvenido a mi versión del Juego del conocido programa de Televisión y realizado dentro de las pràcticas del Bootcamp de Skylabers - Part-Time</p>
+                <p>Para empezar es necessario que introduzcas el nombre del jugador y le des a Añadir Jugador o Enter. Cuando tengas todos los jugadores dale a Empezar Juego</p>
+                <p>Si deseas eliminar los jugadores y volverlos a introducir selecciona Limpiar Jugadores o la tecla ESC y te borrarà el listado de Jugadores</p>
+            </div>
+            <div class="gamestart">
+                <ul id="jugadores"></ul>
+                <div id="error2" class="err">Es necessario que introduzca algún valor como nombre<br /></div>
+                <div id="error" class="err">Es necessario Añadir Jugadores<br /></div>
+                <input type="text" name="jugador" id="jugador" onkeypress="keyStart(event)">
+                <input type="button" value="Añadir Jugador" onclick="AddPlayer()"><br />
+                <label for="timer">Tiempo por jugador:</label><input type="text" name="timer" id="timer" value="200"><br />
+                <input type="button" value="Empezar Juego" onclick="StartGame()">
+                <input type="button" value="Limpiar Jugadores" onclick="ClearPlayerList()">
+            </div>
         </div>
         <div id="game">
-            <div class="instruccions">
-                Pulsar Enter para
-            </div>
             <div id="rosco" class="rosco">
                 <div id="A" class="active">A</div>
                 <div id="B" class="active">B</div>
@@ -63,7 +65,18 @@
                     <input id="OK" type="button" value="Ok" accesskey="o" onclick="nextTurn()">
                     <input id="pasa" type="button" value="Pasapalabra" accesskey="p" onclick="pass()">
                 </div>
-                <div id="punt" class="centro">puntuación: </div>
+                <div id="punt" class="info">puntuación: </div>
+                <div id="time" class="info"></div>
+            </div>
+            <div class="instruccions">
+                <h3>Instrucciones:</h3>
+                <ul>
+                    <li>Pulsar Enter o clicar en Ok para aceptar la palabra</li>
+                    <li>Pulsar Espacio o clicar en Pasapalabra para no responder i pasar al otro jugador(solo multijugador).</li>
+                    <li>Pulsar Esc para acabar la partida inmediatamente.</li>
+                    <li>Si solo queda un jugador el contador no pararà ni con las preguntas erroneas.</li>
+                    <li>Si juegan varios jugadores al equivocar-se en una respuesta passa al siguiente jugador.</li>
+                </ul>
             </div>
         </div>
     </main>

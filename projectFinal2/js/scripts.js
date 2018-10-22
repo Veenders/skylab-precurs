@@ -27,6 +27,7 @@ var Y = [];
 var Z = [];
 var questions = [A, B, C, D, E, F, G, H, I, J, K, L, M, N, Ñ, O, P, Q, R, S, T, U, V, W, X, Y, Z];
 var games = [];
+
 function questionDB(answer, question) {
     this.answer = answer;
     this.question = question;
@@ -37,12 +38,12 @@ function question(questionDB) {
     this.question = questionDB.question;
     this.status = 0;
     this.correct = 0;
-    this.setClass = function(){
-        var clase ="";
-        if(this.status==0){
+    this.setClass = function() {
+        var clase = "";
+        if (this.status == 0) {
             clase = "active";
-        }else{
-            this.correct==1?clase="success":clase="error";
+        } else {
+            this.correct == 1 ? clase = "success" : clase = "error";
         }
         return clase;
     }
@@ -51,6 +52,7 @@ function question(questionDB) {
 function Player(name, seconds) {
     this.name = name;
     this.points = 0;
+    this.game = 0;
     this.round = 0;
     this.finished = false;
     this.rosco = [];
@@ -64,31 +66,34 @@ function Player(name, seconds) {
             this.rosco.push(new question(questions[i][num]));
         }
     }
-    this.drawRosco = function(){
+    this.drawRosco = function() {
         var rosco = document.getElementById("rosco").querySelectorAll("div");
-        this.rosco.forEach(function(question,i){
+        this.rosco.forEach(function(question, i) {
             rosco[i].className = question.setClass();
         })
     }
-    this.nextQuest = function(){
+    this.nextQuest = function() {
         var j = 0;
-        this.round==this.rosco.length-1?j=0:j=this.round+1;
-        if(!this.setStatus()){
-            for(var i=j;i!=this.round;i++){
-                if(this.rosco[i].status == 0){
+        this.round == this.rosco.length - 1 ? j = 0 : j = this.round + 1;
+        if (!this.setStatus()) {
+            for (var i = j; i != this.round; i++) {
+                if (this.rosco[i].status == 0) {
                     this.round = i;
                     break;
                 }
-                i==this.rosco.length-1?i=0:"";
+                i == this.rosco.length - 1 ? i = 0 : "";
             }
         }
     }
     this.setStatus = function() {
+        if (this.finished) {
+            return this.finished;
+        }
         var status = 0;
         this.rosco.forEach(function(question) {
             question.status ? status++ : "";
         });
-        this.rosco.length == status? this.finished = true:this.finished=false;
+        this.rosco.length == status ? this.finished = true : this.finished = false;
         return this.finished;
     }
 }
@@ -100,34 +105,34 @@ function Game() {
         this.players = players;
     }
     this.finish = function() {
-        var finished=0;
+        var finished = 0;
         players.forEach(function(player) {
             player.finished ? finished++ : "";
         });
-        if(this.players.length == finished){
+        if (this.players.length == finished) {
             return true;
         }
         return false;
     }
-    this.nextPlayer=function(){
+    this.nextPlayer = function() {
         var j = 0;
-        this.player === this.players.length -1 ? j=0 : j=this.player+1;
-        if(!this.finish()){
-            for(var i = j;i!=this.player;i++){
-                if(!this.players[i].finished){
-                    this.player=i;
+        this.player === this.players.length - 1 ? j = 0 : j = this.player + 1;
+        if (!this.finish()) {
+            for (var i = j; i != this.player; i++) {
+                if (!this.players[i].finished) {
+                    this.player = i;
                     break;
                 }
-                if(i==this.players.length-1){
-                    i=0;
+                if (i == this.players.length - 1) {
+                    i = 0;
                 }
             }
-        }else{
+        } else {
             finishGame();
         }
     }
-    this.activePlayers = function(){
-        var notfinished=0;
+    this.activePlayers = function() {
+        var notfinished = 0;
         players.forEach(function(player) {
             player.finished ? "" : notfinished++;
         });
@@ -207,6 +212,17 @@ function StartGame() {
     }
 }
 
+function timer(player) {
+    var timer = setInterval(function() {
+        player.seconds--;
+        document.getElementById("time").innerHTML = player.seconds;
+        if (player.seconds <= 0) {
+            clearInterval(timer);
+            player.finished = true;
+        }
+    }, 1000);
+}
+
 function PasaPalabra() {
     document.getElementById("palabra").style.display = "inline";
     var game = games[games.length - 1];
@@ -214,49 +230,79 @@ function PasaPalabra() {
     var player = game.players[game.player];
     player.drawRosco();
     definition.innerHTML = player.rosco[player.round].question;
-    document.getElementById("punt").innerHTML = "puntuación: "+player.points;
-    document.getElementById("Pasapalabra").focus(); 
+    document.getElementById("punt").innerHTML = "puntuación: " + player.points;
+    document.getElementById("Pasapalabra").focus();
+    timer(player);
 }
 
-function nextTurn(){
+function nextTurn() {
     var game = games[games.length - 1];
     var player = game.players[game.player];
     var question = player.rosco[player.round];
     var answer = document.getElementById("Pasapalabra");
     question.status = 1;
-    if(question.answer===answer.value.toLowerCase()){
-        answer.value = "";   
+    if (question.answer === answer.value.toLowerCase()) {
+        answer.value = "";
         question.correct = 1;
         player.points++
-        player.setStatus()?game.nextPlayer():player.nextQuest();
+            player.setStatus() ? game.nextPlayer() : player.nextQuest();
         PasaPalabra();
-    }else{
+    } else {
         answer.value = "";
         pass();
     }
 }
 
-function pass(){
+function pass() {
+    clearInterval(timer);
     var game = games[games.length - 1];
     var player = game.players[game.player];
-    var gp=game.player;
-    player.setStatus()?"":player.nextQuest();
+    var gp = game.player;
+    player.setStatus() ? "" : player.nextQuest();
     game.nextPlayer();
     document.getElementById("player").innerHTML = "Turno de: " + game.players[game.player].getName();
-    if(game.activePlayers()==1&&gp==game.player){
+    if (game.activePlayers() == 1 && gp == game.player) {
         PasaPalabra();
-    }else{
+    } else {
         document.getElementById("definicion").innerHTML = '<input id="turn" type="button" value="Continuar" onclick="PasaPalabra()">';
         document.getElementById("palabra").style.display = "none";
     }
 }
-function finishGame(){
-    document.getElementById("start").style.display = "block";
-    document.getElementById("game").style.display = "none";
+
+function scoreBoard() {
+    var finishresults = [];
+    for (var i = 0; i < games.length; i++) {
+        games[i].players.forEach(function(player) {
+            player.game = i;
+            finishresults.push(player);
+        });
+    }
+    finishresults.sort(function(a, b) {
+        return b.points - a.points;
+    });
+    return finishresults;
 }
 
-function keyGame(event){
-    switch(event.which){
+function drawScoreBoard(finishresults) {
+    var inHTML = "<table><tr><th>Game</th><th>Player</th><th>Points</th></tr>";
+    finishresults.forEach(function(player) {
+        inHTML += "<tr><td>" + player.game + "</td><td>" + player.getName() + "</td><td>" + player.points + "</td></tr>";
+    });
+    inHTML += "</table>";
+    document.getElementById("gameresult").innerHTML = inHTML;
+    document.getElementById("gameresult").style.display = "block";
+}
+
+function finishGame() {
+    document.getElementById("palabra").style.display = "none";
+    document.getElementById("game").style.display = "none";
+    document.getElementById("start").style.display = "block";
+    var finishResults = scoreBoard();
+    drawScoreBoard(finishResults);
+}
+
+function keyGame(event) {
+    switch (event.which) {
         case 13:
             nextTurn();
             break;
@@ -269,8 +315,9 @@ function keyGame(event){
             break;
     }
 }
-function keyStart(event){
-    switch(event.which){
+
+function keyStart(event) {
+    switch (event.which) {
         case 13:
             AddPlayer();
             break;
