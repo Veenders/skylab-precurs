@@ -12,10 +12,11 @@
     <main>
         <div id="start">
             <h1>Bienvenidos al Juego de Pasapalabra</h1>
+            <div id="gameresult"></div>
             <ul id="jugadores"></ul>
             <div id="error2" class="err">Es necessario que introduzca algún valor como nombre<br /></div>
             <div id="error" class="err">Es necessario Añadir Jugadores<br /></div>
-            <input type="text" name="jugador" id="jugador">
+            <input type="text" name="jugador" id="jugador" onkeypress="keyStart(event)">
             <input type="button" value="Añadir Jugador" onclick="AddPlayer()"><br />
             <label for="timer">Tiempo por jugador:</label><input type="text" name="timer" id="timer" value="200"><br />
             <input type="button" value="Empezar Juego" onclick="StartGame()">
@@ -26,7 +27,7 @@
             <div class="instruccions">
                 Pulsar Enter para
             </div>
-            <div class="rosco">
+            <div id="rosco" class="rosco">
                 <div id="A" class="active">A</div>
                 <div id="B" class="active">B</div>
                 <div id="C" class="active">C</div>
@@ -58,9 +59,9 @@
                 <div id="player" class="info">Turno de: </div>
                 <div id="definicion" class="centro"></div>
                 <div id="palabra" class="centro">
-                    <input id="Pasapalabra" value="palabra">
-                    <input id="OK" type="button" value="Ok" accesskey="o">
-                    <input id="pasa" type="button" value="Pasapalabra" accesskey="p">
+                    <input id="Pasapalabra" value="palabra" onkeypress="keyGame(event)">
+                    <input id="OK" type="button" value="Ok" accesskey="o" onclick="nextTurn()">
+                    <input id="pasa" type="button" value="Pasapalabra" accesskey="p" onclick="pass()">
                 </div>
                 <div id="punt" class="centro">puntuación: </div>
             </div>

@@ -27,11 +27,112 @@ var Y = [];
 var Z = [];
 var questions = [A, B, C, D, E, F, G, H, I, J, K, L, M, N, Ñ, O, P, Q, R, S, T, U, V, W, X, Y, Z];
 var games = [];
-var iplayer = 0;
-
 function questionDB(answer, question) {
     this.answer = answer;
     this.question = question;
+}
+
+function question(questionDB) {
+    this.answer = questionDB.answer;
+    this.question = questionDB.question;
+    this.status = 0;
+    this.correct = 0;
+    this.setClass = function(){
+        var clase ="";
+        if(this.status==0){
+            clase = "active";
+        }else{
+            this.correct==1?clase="success":clase="error";
+        }
+        return clase;
+    }
+}
+
+function Player(name, seconds) {
+    this.name = name;
+    this.points = 0;
+    this.round = 0;
+    this.finished = false;
+    this.rosco = [];
+    this.seconds = seconds;
+    this.getName = function() {
+        return this.name;
+    }
+    this.setRosco = function() {
+        for (var i = 0; i < questions.length; i++) {
+            var num = parseInt(Math.random() * questions[i].length);
+            this.rosco.push(new question(questions[i][num]));
+        }
+    }
+    this.drawRosco = function(){
+        var rosco = document.getElementById("rosco").querySelectorAll("div");
+        this.rosco.forEach(function(question,i){
+            rosco[i].className = question.setClass();
+        })
+    }
+    this.nextQuest = function(){
+        var j = 0;
+        this.round==this.rosco.length-1?j=0:j=this.round+1;
+        if(!this.setStatus()){
+            for(var i=j;i!=this.round;i++){
+                if(this.rosco[i].status == 0){
+                    this.round = i;
+                    break;
+                }
+                i==this.rosco.length-1?i=0:"";
+            }
+        }
+    }
+    this.setStatus = function() {
+        var status = 0;
+        this.rosco.forEach(function(question) {
+            question.status ? status++ : "";
+        });
+        this.rosco.length == status? this.finished = true:this.finished=false;
+        return this.finished;
+    }
+}
+
+function Game() {
+    this.players = [];
+    this.player = 0;
+    this.setPlayers = function(players) {
+        this.players = players;
+    }
+    this.finish = function() {
+        var finished=0;
+        players.forEach(function(player) {
+            player.finished ? finished++ : "";
+        });
+        if(this.players.length == finished){
+            return true;
+        }
+        return false;
+    }
+    this.nextPlayer=function(){
+        var j = 0;
+        this.player === this.players.length -1 ? j=0 : j=this.player+1;
+        if(!this.finish()){
+            for(var i = j;i!=this.player;i++){
+                if(!this.players[i].finished){
+                    this.player=i;
+                    break;
+                }
+                if(i==this.players.length-1){
+                    i=0;
+                }
+            }
+        }else{
+            finishGame();
+        }
+    }
+    this.activePlayers = function(){
+        var notfinished=0;
+        players.forEach(function(player) {
+            player.finished ? "" : notfinished++;
+        });
+        return notfinished;
+    }
 }
 A.push(new questionDB("abducir", "CON LA A. Dicho de una supuesta criatura extraterrestre: Apoderarse de alguien"));
 B.push(new questionDB("bingo", "CON LA B. Juego que ha sacado de quicio a todos los 'Skylabers' en las sesiones de precurso"));
@@ -60,47 +161,6 @@ W.push(new questionDB("sandwich", "CONTIENE LA W. Emparedado hecho con dos reban
 X.push(new questionDB("botox", "CONTIENE LA X. Toxina bacteriana utilizada en cirujía estética"));
 Y.push(new questionDB("peyote", "CONTIENE LA Y. Pequeño cáctus conocido por sus alcaloides psicoactivos utilizado de forma ritual y medicinal por indígenas americanos"));
 Z.push(new questionDB("zen", "CON LA Z. Escuela de budismo que busca la experiencia de la sabiduría más allá del discurso racional"));
-
-function question(questionDB) {
-    this.answer = questionDB.answer;
-    this.question = questionDB.question;
-    this.status = 0;
-    this.correct = 0;
-}
-
-function Player(name, seconds) {
-    this.name = name;
-    this.points = 0;
-    this.rounds = 0;
-    this.status = 0;
-    this.rosco = [];
-    this.seconds = seconds;
-    this.getName = function() {
-        return this.name;
-    }
-    this.setRosco = function() {
-        for (var i = 0; i < questions.length; i++) {
-            var num = parseInt(Math.random() * questions[i].length);
-            this.rosco.push(new question(questions[i][num]));
-        }
-    }
-
-}
-
-function Game() {
-    this.players = [];
-    this.setPlayers = function(players) {
-        this.players = players;
-    }
-    this.setStatus = function() {
-        var status
-        questions.forEach(function(question) {
-            question.status ? status++ : "";
-        });
-        this.status = status;
-    }
-}
-
 
 function AddPlayer() {
     var list = document.getElementById("jugadores");
@@ -136,12 +196,11 @@ function StartGame() {
         players[i].setRosco();
     });
     if (players.length != 0) {
-        iplayer = 0;
         game.setPlayers(players);
         games.push(game);
         document.getElementById("start").style.display = "none";
         document.getElementById("game").style.display = "block";
-        document.getElementById("player").innerHTML = "Turno de: " + game.players[iplayer].getName();
+        document.getElementById("player").innerHTML = "Turno de: " + game.players[game.player].getName();
         document.getElementById("definicion").innerHTML = '<input id="turn" type="button" value="Empezar" onclick="PasaPalabra()">'
     } else {
         document.getElementById("error").style.display = " inline";
@@ -149,15 +208,74 @@ function StartGame() {
 }
 
 function PasaPalabra() {
-    var cont = true;
+    document.getElementById("palabra").style.display = "inline";
     var game = games[games.length - 1];
     var definition = document.getElementById("definicion");
-    document.getElementById("palabra").style.display = "inline";
-    var j = 0;
-    while (cont) {
-        var player = game.players[iplayer];
-        definition.innerHTML = player.rosco[j].question;
-        j == player.rosco.length - 1 ? cont = false : j++;
-    }
+    var player = game.players[game.player];
+    player.drawRosco();
+    definition.innerHTML = player.rosco[player.round].question;
+    document.getElementById("punt").innerHTML = "puntuación: "+player.points;
+    document.getElementById("Pasapalabra").focus(); 
+}
 
+function nextTurn(){
+    var game = games[games.length - 1];
+    var player = game.players[game.player];
+    var question = player.rosco[player.round];
+    var answer = document.getElementById("Pasapalabra");
+    question.status = 1;
+    if(question.answer===answer.value.toLowerCase()){
+        answer.value = "";   
+        question.correct = 1;
+        player.points++
+        player.setStatus()?game.nextPlayer():player.nextQuest();
+        PasaPalabra();
+    }else{
+        answer.value = "";
+        pass();
+    }
+}
+
+function pass(){
+    var game = games[games.length - 1];
+    var player = game.players[game.player];
+    var gp=game.player;
+    player.setStatus()?"":player.nextQuest();
+    game.nextPlayer();
+    document.getElementById("player").innerHTML = "Turno de: " + game.players[game.player].getName();
+    if(game.activePlayers()==1&&gp==game.player){
+        PasaPalabra();
+    }else{
+        document.getElementById("definicion").innerHTML = '<input id="turn" type="button" value="Continuar" onclick="PasaPalabra()">';
+        document.getElementById("palabra").style.display = "none";
+    }
+}
+function finishGame(){
+    document.getElementById("start").style.display = "block";
+    document.getElementById("game").style.display = "none";
+}
+
+function keyGame(event){
+    switch(event.which){
+        case 13:
+            nextTurn();
+            break;
+        case 32:
+            event.preventDefault();
+            pass();
+            break;
+        case 0:
+            finishGame();
+            break;
+    }
+}
+function keyStart(event){
+    switch(event.which){
+        case 13:
+            AddPlayer();
+            break;
+        case 0:
+            ClearPlayerList();
+            break;
+    }
 }
