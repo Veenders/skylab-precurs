@@ -1,0 +1,86 @@
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Skylab - Pasapalabra</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <main>
+        <div id="start">
+            <h1>Pasapalabra</h1>
+            <div id="gameresult">
+                <p>Bienvenido a mi versión del Juego del conocido programa de Televisión y realizado dentro de las pràcticas del Bootcamp de Skylabers - Part-Time</p>
+                <p>Para empezar es necessario que introduzcas el nombre del jugador y le des a Añadir Jugador o Enter. Cuando tengas todos los jugadores dale a Empezar Juego</p>
+                <p>Si deseas eliminar los jugadores y volverlos a introducir selecciona Limpiar Jugadores o la tecla ESC y te borrarà el listado de Jugadores</p>
+            </div>
+            <div id="gamestart">
+                <ul id="jugadores"></ul>
+                <div id="error2" class="err">Es necessario que introduzca algún valor como nombre<br /></div>
+                <div id="error" class="err">Es necessario Añadir Jugadores<br /></div>
+                <input type="text" name="jugador" id="jugador" onkeypress="keyStart(event)">
+                <input type="button" value="Añadir Jugador" onclick="AddPlayer()"><br />
+                <label for="timer">Tiempo por jugador:</label><input type="text" name="timer" id="timer" value="200"><br />
+                <input type="button" value="Empezar Juego" onclick="StartGame()">
+                <input type="button" value="Limpiar Jugadores" onclick="ClearPlayerList()">
+            </div>
+        </div>
+        <div id="game">
+            <div id="rosco" class="rosco">
+                <div id="A" class="active">A</div>
+                <div id="B" class="active">B</div>
+                <div id="C" class="active">C</div>
+                <div id="D" class="active">D</div>
+                <div id="E" class="active">E</div>
+                <div id="F" class="active">F</div>
+                <div id="G" class="active">G</div>
+                <div id="H" class="active">H</div>
+                <div id="I" class="active">I</div>
+                <div id="J" class="active">J</div>
+                <div id="K" class="active">K</div>
+                <div id="L" class="active">L</div>
+                <div id="M" class="active">M</div>
+                <div id="N" class="active">N</div>
+                <div id="Ñ" class="active">Ñ</div>
+                <div id="O" class="active">O</div>
+                <div id="P" class="active">P</div>
+                <div id="Q" class="active">Q</div>
+                <div id="R" class="active">R</div>
+                <div id="S" class="active">S</div>
+                <div id="T" class="active">T</div>
+                <div id="U" class="active">U</div>
+                <div id="V" class="active">V</div>
+                <div id="W" class="active">W</div>
+                <div id="X" class="active">X</div>
+                <div id="Y" class="active">Y</div>
+                <div id="Z" class="active">Z</div>
+                <div id="titulo" class="info">Pasapalabra</div>
+                <div id="player" class="info">Turno de: </div>
+                <div id="definicion" class="centro"></div>
+                <div id="palabra" class="centro">
+                    <input id="Pasapalabra" value="" onkeypress="keyGame(event)">
+                    <input id="OK" type="button" value="Ok" accesskey="o" onclick="nextTurn()">
+                    <input id="pasa" type="button" value="Pasapalabra" accesskey="p" onclick="pass()">
+                </div>
+                <div id="punt" class="info">puntuación: </div>
+                <div id="time" class="info"></div>
+            </div>
+            <div class="instruccions">
+                <h3>Instrucciones:</h3>
+                <ul>
+                    <li>Pulsar Enter o clicar en Ok para aceptar la palabra</li>
+                    <li>Pulsar Espacio o clicar en Pasapalabra para no responder i pasar al otro jugador(solo multijugador).</li>
+                    <li>Pulsar Esc para acabar la partida inmediatamente.</li>
+                    <li>Si solo queda un jugador el contador no pararà ni con las preguntas erroneas.</li>
+                    <li>Si juegan varios jugadores al equivocar-se en una respuesta passa al siguiente jugador.</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+</body>
+<script src="js/scripts.js"></script>
+
+</html>

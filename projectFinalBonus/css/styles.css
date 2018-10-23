@@ -1,0 +1,332 @@
+body {
+    font-family: sans-serif;
+    background-color: lightblue;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#game {
+    display: none;
+}
+
+#start {
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10% auto;
+    text-align: center;
+    background: #3f5ad3;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px #565656;
+    color: white;
+}
+
+#start h1{
+    flex-shrink: 0;
+    width: 100%;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 3rem;
+}
+
+#gamestart{
+    flex-grow: 1;
+}
+
+#start input[type="text"] {
+    width: 40%;
+    padding: 0.5rem;
+    border-radius: 10px;
+    margin: 0.5rem;
+    font-size: 1.25rem;
+}
+
+#start input[type="button"] {
+    padding: 0.5rem;
+    font-size: 1.05rem;
+    margin: 0.5rem;
+    background: lightblue;
+    border: 1px solid #565656;
+    border-radius: 5px;
+    color: #565656;
+}
+
+#jugadores {
+    list-style-type: none;
+    font-size: 1.25rem;
+}
+
+#jugadores li {
+    padding: 0.5rem 0;
+}
+
+#gameresult {
+    width: 40%;
+    height: 100%;
+    text-align: left;
+}
+
+#gameresult table {
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+#gameresult th,
+td {
+    border-bottom: 2px solid white;
+    padding: 0.5rem 0;
+}
+
+.instruccions {
+    float: left;
+    width: 20%;
+    height: 100vh;
+    background-color: #3f5ad3;
+    color: white;
+    margin: 0;
+    padding: 1rem;
+}
+
+.instruccions li {
+    list-style-type: none;
+    margin: 1rem 0;
+}
+
+.active {
+    background-image: url("../img/active.png");
+}
+
+.success {
+    background-image: url("../img/success.png");
+}
+
+.error {
+    background-image: url("../img/error.png");
+}
+
+.rosco div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #565656;
+    font-weight: bolder;
+    font-size: 1.25rem;
+    width: 5rem;
+    height: 5rem;
+    margin-top: -2.5rem;
+    margin-left: -2.5rem;
+    position: absolute;
+    top: 50%;
+    left: 60%;
+}
+
+.centro,
+.info {
+    text-align: center;
+}
+
+#palabra {
+    display: none;
+    width: 30rem;
+    margin-left: -15rem;
+}
+
+.err {
+    color: red;
+}
+
+#error,
+#error2 {
+    display: none;
+}
+
+#Pasapalabra {
+    width: 10rem;
+    padding: 0.5rem;
+    border-radius: 10px;
+    margin: 0.5rem;
+    font-size: 1.25rem;
+}
+
+#turn {
+    padding: 0.5rem;
+    margin: 0.5rem;
+    font-size: 1.2rem;
+    background: red;
+    border: 1px solid #565656;
+    border-radius: 5px;
+    color: white;
+}
+
+#Ok {
+    padding: 0.5rem;
+    margin: 0.5rem;
+    font-size: 1.2rem;
+    background: green;
+    border: 1px solid #565656;
+    border-radius: 5px;
+    color: white;
+}
+
+#pasa {
+    padding: 0.5rem;
+    margin: 0.5rem;
+    background: #3f5ad3;
+    border: 1px solid #565656;
+    border-radius: 5px;
+    color: white;
+    font-size: 1.2rem;
+}
+
+#titulo {
+    transform: translate(0, -11rem);
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 3rem;
+}
+
+#player {
+    transform: translate(0, -8rem);
+    font-size: 1.5rem;
+    width: 15rem;
+    margin-left: -7.5rem;
+}
+
+#definicion {
+    transform: translate(0, -5rem);
+    width: 30rem;
+    height: 4rem;
+    margin-left: -15rem;
+    margin-top: -2rem;
+    font-size: 1.05rem;
+}
+
+#punt {
+    transform: translate(0, 3rem);
+}
+
+#time {
+    transform: translate(0, 6rem);
+    font-size: 3rem;
+}
+
+#A {
+    transform: rotate(270deg) translate(20rem) rotate(-270deg);
+}
+
+#B {
+    transform: rotate(283.33deg) translate(20rem) rotate(-283.33deg);
+}
+
+#C {
+    transform: rotate(296.66deg) translate(20rem) rotate(-296.66deg);
+}
+
+#D {
+    transform: rotate(310deg) translate(20rem) rotate(-310deg);
+}
+
+#E {
+    transform: rotate(323.33deg) translate(20rem) rotate(-323.33deg);
+}
+
+#F {
+    transform: rotate(336.66deg) translate(20rem) rotate(-336.66deg);
+}
+
+#G {
+    transform: rotate(350deg) translate(20rem) rotate(-350deg);
+}
+
+#H {
+    transform: rotate(3.33deg) translate(20rem) rotate(-3.33deg);
+}
+
+#I {
+    transform: rotate(16.66deg) translate(20rem) rotate(-16.66deg);
+}
+
+#J {
+    transform: rotate(30deg) translate(20rem) rotate(-30deg);
+}
+
+#K {
+    transform: rotate(43.33deg) translate(20rem) rotate(-43.33deg);
+}
+
+#L {
+    transform: rotate(56.66deg) translate(20rem) rotate(-56.66deg);
+}
+
+#M {
+    transform: rotate(70deg) translate(20rem) rotate(-70deg);
+}
+
+#N {
+    transform: rotate(83.33deg) translate(20rem) rotate(-83.33deg);
+}
+
+#Ñ {
+    transform: rotate(96.66deg) translate(20rem) rotate(-96.66deg);
+}
+
+#O {
+    transform: rotate(110deg) translate(20rem) rotate(-110deg);
+}
+
+#P {
+    transform: rotate(123.33deg) translate(20rem) rotate(-123.33deg);
+}
+
+#Q {
+    transform: rotate(136.66deg) translate(20rem) rotate(-136.66deg);
+}
+
+#R {
+    transform: rotate(150deg) translate(20rem) rotate(-150deg);
+}
+
+#S {
+    transform: rotate(163.33deg) translate(20rem) rotate(-163.33deg);
+}
+
+#T {
+    transform: rotate(176.66deg) translate(20rem) rotate(-176.66deg);
+}
+
+#U {
+    transform: rotate(190deg) translate(20rem) rotate(-190deg);
+}
+
+#V {
+    transform: rotate(203.33deg) translate(20rem) rotate(-203.33deg);
+}
+
+#W {
+    transform: rotate(216.66deg) translate(20rem) rotate(-216.66deg);
+}
+
+#X {
+    transform: rotate(230deg) translate(20rem) rotate(-230deg);
+}
+
+#Y {
+    transform: rotate(243.33deg) translate(20rem) rotate(-243.33deg);
+}
+
+#Z {
+    transform: rotate(256.66deg) translate(20rem) rotate(-256.66deg);
+}

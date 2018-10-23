@@ -1,0 +1,273 @@
+{
+    "questionDB": [{
+            "letter": "A",
+            "answer": "abducir",
+            "question": "CON LA A. Dicho de una supuesta criatura extraterrestre: Apoderarse de alguien"
+        },
+        {
+            "letter": "A",
+            "answer": "anaranjear",
+            "question": "CON LA A. Tirar o arrojar naranjas contra alguien"
+        },
+        {
+            "letter": "B",
+            "answer": "bingo",
+            "question": "CON LA B. Juego que ha sacado de quicio a todos los 'Skylabers' en las sesiones de precurso"
+        },
+        {
+            "letter": "B",
+            "answer": "boson",
+            "question": "CON LA B. Partícula elemental que, como el fotón, ejerce la interacción entre fermiones."
+        },
+        {
+            "letter": "C",
+            "answer": "churumbel",
+            "question": "CON LA C. Niño, crío, bebé"
+        },
+        {
+            "letter": "C",
+            "answer": "cosa",
+            "question": "CON LA C. Objeto inanimado, por oposición a ser viviente. Todo lo que tiene entidad, ya sea corporal o espiritual, natural o artificial, real o abstracta."
+        },
+        {
+            "letter": "D",
+            "answer": "diarrea",
+            "question": "CON LA D. Anormalidad en la función del aparato digestivo caracterizada por frecuentes evacuaciones y su consistencia líquida"
+        },
+        {
+            "letter": "D",
+            "answer": "distopia",
+            "question": "CON LA D. Representación ficticia de una sociedad futura de características negativas causantes de la alienación humana."
+        },
+        {
+            "letter": "E",
+            "answer": "ectoplasma",
+            "question": "CON LA E. Gelatinoso y se encuentra debajo de la membrana plasmática. Los cazafantasmas medían su radiación"
+        },
+        {
+            "letter": "E",
+            "answer": "enigma",
+            "question": "CON LA E. Realidad, suceso o comportamiento que no se alcanzan a comprender, o que difícilmente pueden entenderse o interpretarse."
+        },
+        {
+            "letter": "F",
+            "answer": "facil",
+            "question": "CON LA F. Que no requiere gran esfuerzo, capacidad o dificultad"
+        },
+        {
+            "letter": "F",
+            "answer": "favor",
+            "question": "CON LA F. Ayuda o socorro que se concede a alguien. Honra, beneficio, gracia."
+        },
+        {
+            "letter": "G",
+            "answer": "galaxia",
+            "question": "CON LA G. Conjunto enorme de estrellas, polvo interestelar, gases y partículas"
+        },
+        {
+            "letter": "G",
+            "answer": "gato",
+            "question": "CON LA G. Animal félido en general."
+        },
+        {
+            "letter": "H",
+            "answer": "harakiri",
+            "question": "CON LA H. Suicidio ritual japonés por desentrañamiento"
+        },
+        {
+            "letter": "H",
+            "answer": "hoy",
+            "question": "CON LA H. El día en que estamos. El día presente."
+        },
+        {
+            "letter": "I",
+            "answer": "iglesia",
+            "question": "CON LA I. Templo cristiano"
+        },
+        {
+            "letter": "I",
+            "answer": "idea",
+            "question": "CON LA I. Representación mental de una cosa"
+        },
+        {
+            "letter": "J",
+            "answer": "jabali",
+            "question": "CON LA J. Variedad salvaje del cerdo que sale en la película 'El Rey León', de nombre Pumba"
+        },
+        {
+            "letter": "J",
+            "answer": "javascript",
+            "question": "CON LA J. Lenguaje de programación con el que se inicia el precurso en Skylab"
+        },
+        {
+            "letter": "K",
+            "answer": "kamikaze",
+            "question": "CON LA K. Persona que se juega la vida realizando una acción temeraria"
+        },
+        {
+            "letter": "K",
+            "answer": "kafkiano",
+            "question": "CON LA K. Dicho de una situación: Absurda, angustiosa"
+        },
+        {
+            "letter": "L",
+            "answer": "licantropo",
+            "question": "CON LA L. Hombre lobo"
+        },
+        {
+            "letter": "L",
+            "answer": "libre",
+            "question": "CON LA L. Dicese del software cuyo código fuente puede ser estudiado, modificado, y utilizado libremente con cualquier fin y redistribuido con o sin cambios o mejoras"
+        },
+        {
+            "letter": "M",
+            "answer": "misantropo",
+            "question": "CON LA M. Persona que huye del trato con otras personas o siente gran aversión hacia ellas"
+        },
+        {
+            "letter": "M",
+            "answer": "mujer",
+            "question": "CON LA M. Persona de sexo femenino. Señora, componente humano femenino."
+        },
+        {
+            "letter": "N",
+            "answer": "necedad",
+            "question": "CON LA N. Demostración de poca inteligencia"
+        },
+        {
+            "letter": "N",
+            "answer": "nanotecnologia",
+            "question": "CON LA N. Tecnología de los materiales y de las estructuras en la que el orden de magnitud se mide en nanómetros, con aplicación a la física, la química y la biología."
+        },
+        {
+            "letter": "Ñ",
+            "answer": "señal",
+            "question": "CONTIENE LA Ñ. Indicio que permite deducir algo de lo que no se tiene un conocimiento directo."
+        },
+        {
+            "letter": "Ñ",
+            "answer": "guiño",
+            "question": "CONTIENE LA Ñ. Gesto que denota aprobación. Emoticono muy usado"
+        },
+        {
+            "letter": "O",
+            "answer": "orco",
+            "question": "CON LA O. Humanoide fantástico de apariencia terrible y bestial, piel de color verde creada por el escritor Tolkien"
+        },
+        {
+            "letter": "O",
+            "answer": "obstar",
+            "question": "CON LA O. Dicho de una cosa: Ser un obstáculo o un impedimento"
+        },
+        {
+            "letter": "P",
+            "answer": "protoss",
+            "question": "CON LA P. Raza ancestral tecnológicamente avanzada que se caracteriza por sus grandes poderes psíonicos del videojuego StarCraft"
+        },
+        {
+            "letter": "P",
+            "answer": "padre",
+            "question": "CON LA P. Progenitor, creador, cura"
+        },
+        {
+            "letter": "Q",
+            "answer": "queso",
+            "question": "CON LA Q. Producto obtenido por la maduración de la cuajada de la leche"
+        },
+        {
+            "letter": "Q",
+            "answer": "quinto",
+            "question": "CON LA Q. Ejercicio sobre HTML. Cinco partes de una unidad. Que ocupa el lugar número cinco en una serie ordenada."
+        },
+        {
+            "letter": "R",
+            "answer": "raton",
+            "question": "CON LA R. Roedor"
+        },
+        {
+            "letter": "R",
+            "answer": "rio",
+            "question": "CON LA R. Torrente constante de agua."
+        },
+        {
+            "letter": "S",
+            "answer": "stackoverflow",
+            "question": "CON LA S. Comunidad salvadora de todo desarrollador informático"
+        },
+        {
+            "letter": "S",
+            "answer": "software",
+            "question": "CON LA S. Conjunto de programas, instrucciones y reglas informáticas para ejecutar ciertas tareas en una computadora."
+        },
+        {
+            "letter": "T",
+            "answer": "terminator",
+            "question": "CON LA T. Película del director James Cameron que consolidó a Arnold Schwarzenegger como actor en 1984"
+        },
+        {
+            "letter": "T",
+            "answer": "timon",
+            "question": "CON LA T. Suricato amigo de Pumba en el Rey Leon. Dirección o gobierno de un negocio"
+        },
+        {
+            "letter": "U",
+            "answer": "unamuno",
+            "question": "CON LA U. Escritor y filósofo español de la generación del 98 autor del libro 'Niebla' en 1914"
+        },
+        {
+            "letter": "U",
+            "answer": "undefined",
+            "question": "CON LA U. Valor de una variable cuando no esta definida en Javascript"
+        },
+        {
+            "letter": "V",
+            "answer": "vikingos",
+            "question": "CON LA V. Nombre dado a los miembros de los pueblos nórdicos originarios de Escandinavia, famosos por sus incursiones y pillajes en Europa"
+        },
+        {
+            "letter": "V",
+            "answer": "verdad",
+            "question": "CON LA V. Cierto"
+        },
+        {
+            "letter": "W",
+            "answer": "sandwich",
+            "question": "CONTIENE LA W. Emparedado hecho con dos rebanadas de pan entre las cuales se coloca jamón y queso"
+        },
+        {
+            "letter": "W",
+            "answer": "hardware",
+            "question": "CONTIENE LA W. Equipo. conjunto de aparatos de una computadora."
+        },
+        {
+            "letter": "X",
+            "answer": "botox",
+            "question": "CONTIENE LA X. Toxina bacteriana utilizada en cirujía estética"
+        },
+        {
+            "letter": "X",
+            "answer": "exito",
+            "question": "CONTIENE LA X. Lo que nos espera al acabar el curso de Skylabs. Resultado feliz de una actuación, negocio, etc."
+        },
+        {
+            "letter": "Y",
+            "answer": "peyote",
+            "question": "CONTIENE LA Y. Pequeño cáctus conocido por sus alcaloides psicoactivos utilizado de forma ritual y medicinal por indígenas americanos"
+        },
+        {
+            "letter": "Y",
+            "answer": "ayahuasca",
+            "question": "CONTIENE LA Y. Liana de la selva de cuyas hojas se prepara un brebaje de efectos alucinógenos, empleado por chamanes con fines curativos."
+        },
+        {
+            "letter": "Z",
+            "answer": "zen",
+            "question": "CON LA Z. Escuela de budismo que busca la experiencia de la sabiduría más allá del discurso racional"
+        },
+        {
+            "letter": "Z",
+            "answer": "paz",
+            "question": "CONTIENE LA Z. Concordia. Tranquilidad y sosiego del ánimo, contrarios a la turbación que producen las pasiones."
+        }
+    ]
+}
