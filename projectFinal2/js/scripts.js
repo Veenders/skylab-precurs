@@ -57,6 +57,7 @@ function Player(name, seconds) {
     this.finished = false;
     this.rosco = [];
     this.seconds = seconds;
+    this.timer;
     this.getName = function() {
         return this.name;
     }
@@ -116,6 +117,7 @@ function Game() {
     }
     this.nextPlayer = function() {
         var j = 0;
+        clearInterval(this.players[this.player].timer);
         this.player === this.players.length - 1 ? j = 0 : j = this.player + 1;
         if (!this.finish()) {
             for (var i = j; i != this.player; i++) {
@@ -140,32 +142,59 @@ function Game() {
     }
 }
 A.push(new questionDB("abducir", "CON LA A. Dicho de una supuesta criatura extraterrestre: Apoderarse de alguien"));
+A.push(new questionDB("anaranjear", "CON LA A. Tirar o arrojar naranjas contra alguien"));
 B.push(new questionDB("bingo", "CON LA B. Juego que ha sacado de quicio a todos los 'Skylabers' en las sesiones de precurso"));
+B.push(new questionDB("boson", "CON LA B. Partícula elemental que, como el fotón, ejerce la interacción entre fermiones."));
 C.push(new questionDB("churumbel", "CON LA C. Niño, crío, bebé"));
+C.push(new questionDB("cosa", "CON LA C. Objeto inanimado, por oposición a ser viviente. Todo lo que tiene entidad, ya sea corporal o espiritual, natural o artificial, real o abstracta."));
 D.push(new questionDB("diarrea", "CON LA D. Anormalidad en la función del aparato digestivo caracterizada por frecuentes evacuaciones y su consistencia líquida"));
+D.push(new questionDB("distopia", "CON LA D. Representación ficticia de una sociedad futura de características negativas causantes de la alienación humana."));
 E.push(new questionDB("ectoplasma", "CON LA E. Gelatinoso y se encuentra debajo de la membrana plasmática. Los cazafantasmas medían su radiación"));
+E.push(new questionDB("enigma", "CON LA E. Realidad, suceso o comportamiento que no se alcanzan a comprender, o que difícilmente pueden entenderse o interpretarse."));
 F.push(new questionDB("facil", "CON LA F. Que no requiere gran esfuerzo, capacidad o dificultad"));
+F.push(new questionDB("favor", "CON LA F. Ayuda o socorro que se concede a alguien. Honra, beneficio, gracia."));
 G.push(new questionDB("galaxia", "CON LA G. Conjunto enorme de estrellas, polvo interestelar, gases y partículas"));
+G.push(new questionDB("gato", "CON LA G. Animal félido en general."));
 H.push(new questionDB("harakiri", "CON LA H. Suicidio ritual japonés por desentrañamiento"));
+H.push(new questionDB("hoy", "CON LA H. El día en que estamos. El día presente."));
 I.push(new questionDB("iglesia", "CON LA I. Templo cristiano"));
+I.push(new questionDB("idea", "CON LA I. Representación mental de una cosa"));
 J.push(new questionDB("jabali", "CON LA J. Variedad salvaje del cerdo que sale en la película 'El Rey León', de nombre Pumba"));
+J.push(new questionDB("javascript", "CON LA J. Lenguaje de programación con el que se inicia el precurso en Skylab"));
 K.push(new questionDB("kamikaze", "CON LA K. Persona que se juega la vida realizando una acción temeraria"));
+K.push(new questionDB("kafkiano", "CON LA K. Dicho de una situación: Absurda, angustiosa"));
 L.push(new questionDB("licantropo", "CON LA L. Hombre lobo"));
+L.push(new questionDB("libre", "CON LA L. Dicese del software cuyo código fuente puede ser estudiado, modificado, y utilizado libremente con cualquier fin y redistribuido con o sin cambios o mejoras"));
 M.push(new questionDB("misantropo", "CON LA M. Persona que huye del trato con otras personas o siente gran aversión hacia ellas"));
+M.push(new questionDB("mujer", "CON LA M. Persona de sexo femenino. Señora, componente humano femenino."));
 N.push(new questionDB("necedad", "CON LA N. Demostración de poca inteligencia"));
+N.push(new questionDB("nanotecnologia","CON LA N. Tecnología de los materiales y de las estructuras en la que el orden de magnitud se mide en nanómetros, con aplicación a la física, la química y la biología."))
 Ñ.push(new questionDB("señal", "CONTIENE LA Ñ. Indicio que permite deducir algo de lo que no se tiene un conocimiento directo."));
+Ñ.push(new questionDB("guiño", "CONTIENE LA Ñ. Gesto que denota aprobación. Emoticono muy usado"));
 O.push(new questionDB("orco", "CON LA O. Humanoide fantástico de apariencia terrible y bestial, piel de color verde creada por el escritor Tolkien"));
+O.push(new questionDB("obstar", "CON LA O. Dicho de una cosa: Ser un obstáculo o un impedimento"));
 P.push(new questionDB("protoss", "CON LA P. Raza ancestral tecnológicamente avanzada que se caracteriza por sus grandes poderes psíonicos del videojuego StarCraft"));
+P.push(new questionDB("padre", "CON LA P. Progenitor, creador, cura"));
 Q.push(new questionDB("queso", "CON LA Q. Producto obtenido por la maduración de la cuajada de la leche"));
+Q.push(new questionDB("quinto", "CON LA Q. Ejercicio sobre HTML. Cinco partes de una unidad. Que ocupa el lugar número cinco en una serie ordenada."));
 R.push(new questionDB("raton", "CON LA R. Roedor"));
+R.push(new questionDB("rio", "CON LA R. Torrente constante de agua."));
 S.push(new questionDB("stackoverflow", "CON LA S. Comunidad salvadora de todo desarrollador informático"));
+S.push(new questionDB("software", "CON LA S. Conjunto de programas, instrucciones y reglas informáticas para ejecutar ciertas tareas en una computadora."));
 T.push(new questionDB("terminator", "CON LA T. Película del director James Cameron que consolidó a Arnold Schwarzenegger como actor en 1984"));
+T.push(new questionDB("timon", "CON LA T. Suricato amigo de Pumba en el Rey Leon. Dirección o gobierno de un negocio"));
 U.push(new questionDB("unamuno", "CON LA U. Escritor y filósofo español de la generación del 98 autor del libro 'Niebla' en 1914"));
+U.push(new questionDB("undefined", "CON LA U. Valor de una variable cuando no esta definida en Javascript"));
 V.push(new questionDB("vikingos", "CON LA V. Nombre dado a los miembros de los pueblos nórdicos originarios de Escandinavia, famosos por sus incursiones y pillajes en Europa"));
+V.push(new questionDB("verdad", "CON LA V. Cierto"));
 W.push(new questionDB("sandwich", "CONTIENE LA W. Emparedado hecho con dos rebanadas de pan entre las cuales se coloca jamón y queso"));
+W.push(new questionDB("hardware", "CONTIENE LA W. Equipo. conjunto de aparatos de una computadora."));
 X.push(new questionDB("botox", "CONTIENE LA X. Toxina bacteriana utilizada en cirujía estética"));
+X.push(new questionDB("exito", "CONTIENE LA X. Lo que nos espera al acabar el curso de Skylabs. Resultado feliz de una actuación, negocio, etc."));
 Y.push(new questionDB("peyote", "CONTIENE LA Y. Pequeño cáctus conocido por sus alcaloides psicoactivos utilizado de forma ritual y medicinal por indígenas americanos"));
+Y.push(new questionDB("ayahuasca", "CONTIENE LA Y. Liana de la selva de cuyas hojas se prepara un brebaje de efectos alucinógenos, empleado por chamanes con fines curativos."));
 Z.push(new questionDB("zen", "CON LA Z. Escuela de budismo que busca la experiencia de la sabiduría más allá del discurso racional"));
+Z.push(new questionDB("paz", "CONTIENE LA Z. Concordia. Tranquilidad y sosiego del ánimo, contrarios a la turbación que producen las pasiones."));
 
 function AddPlayer() {
     var list = document.getElementById("jugadores");
@@ -206,19 +235,20 @@ function StartGame() {
         document.getElementById("start").style.display = "none";
         document.getElementById("game").style.display = "block";
         document.getElementById("player").innerHTML = "Turno de: " + game.players[game.player].getName();
-        document.getElementById("definicion").innerHTML = '<input id="turn" type="button" value="Empezar" onclick="PasaPalabra()">'
+        document.getElementById("definicion").innerHTML = '<input id="turn" type="button" value="Empezar" onclick="PasaPalabra()" autofocus onkeypress="keyTurn(event)">'
     } else {
         document.getElementById("error").style.display = " inline";
     }
 }
 
 function timer(player) {
-    var timer = setInterval(function() {
+    player.timer = setInterval(function() {
         player.seconds--;
         document.getElementById("time").innerHTML = player.seconds;
         if (player.seconds <= 0) {
             clearInterval(timer);
             player.finished = true;
+            games[games.length - 1].nextPlayer();
         }
     }, 1000);
 }
@@ -228,8 +258,10 @@ function PasaPalabra() {
     var game = games[games.length - 1];
     var definition = document.getElementById("definicion");
     var player = game.players[game.player];
+    clearInterval(player.timer);
     player.drawRosco();
     definition.innerHTML = player.rosco[player.round].question;
+    document.getElementById("player").innerHTML = "Turno de: " + game.players[game.player].getName();
     document.getElementById("punt").innerHTML = "puntuación: " + player.points;
     document.getElementById("Pasapalabra").focus();
     timer(player);
@@ -254,9 +286,9 @@ function nextTurn() {
 }
 
 function pass() {
-    clearInterval(timer);
     var game = games[games.length - 1];
     var player = game.players[game.player];
+    clearInterval(player.timer);
     var gp = game.player;
     player.setStatus() ? "" : player.nextQuest();
     game.nextPlayer();
@@ -264,7 +296,7 @@ function pass() {
     if (game.activePlayers() == 1 && gp == game.player) {
         PasaPalabra();
     } else {
-        document.getElementById("definicion").innerHTML = '<input id="turn" type="button" value="Continuar" onclick="PasaPalabra()">';
+        document.getElementById("definicion").innerHTML = '<input id="turn" type="button" value="Continuar" onclick="PasaPalabra()" autofocus onkeypress="keyTurn(event)">';
         document.getElementById("palabra").style.display = "none";
     }
 }
@@ -294,9 +326,12 @@ function drawScoreBoard(finishresults) {
 }
 
 function finishGame() {
+    games[games.length-1].players.forEach(function(player){
+        clearInterval(player.timer);
+    });
     document.getElementById("palabra").style.display = "none";
     document.getElementById("game").style.display = "none";
-    document.getElementById("start").style.display = "block";
+    document.getElementById("start").style.display = "flex";
     var finishResults = scoreBoard();
     drawScoreBoard(finishResults);
 }
@@ -323,6 +358,19 @@ function keyStart(event) {
             break;
         case 0:
             ClearPlayerList();
+            break;
+    }
+}
+
+function keyTurn(event){
+    console.log("Entra");
+    switch (event.which) {
+        case 13:
+        case 32:
+            PasaPalabra();
+            break;
+        case 0:
+            finishGame();
             break;
     }
 }

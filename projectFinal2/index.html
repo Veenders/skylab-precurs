@@ -17,7 +17,7 @@
                 <p>Para empezar es necessario que introduzcas el nombre del jugador y le des a Añadir Jugador o Enter. Cuando tengas todos los jugadores dale a Empezar Juego</p>
                 <p>Si deseas eliminar los jugadores y volverlos a introducir selecciona Limpiar Jugadores o la tecla ESC y te borrarà el listado de Jugadores</p>
             </div>
-            <div class="gamestart">
+            <div id="gamestart">
                 <ul id="jugadores"></ul>
                 <div id="error2" class="err">Es necessario que introduzca algún valor como nombre<br /></div>
                 <div id="error" class="err">Es necessario Añadir Jugadores<br /></div>
@@ -61,7 +61,7 @@
                 <div id="player" class="info">Turno de: </div>
                 <div id="definicion" class="centro"></div>
                 <div id="palabra" class="centro">
-                    <input id="Pasapalabra" value="palabra" onkeypress="keyGame(event)">
+                    <input id="Pasapalabra" value="" onkeypress="keyGame(event)">
                     <input id="OK" type="button" value="Ok" accesskey="o" onclick="nextTurn()">
                     <input id="pasa" type="button" value="Pasapalabra" accesskey="p" onclick="pass()">
                 </div>

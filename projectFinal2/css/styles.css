@@ -18,6 +18,8 @@ main {
 
 #start {
     width: 50%;
+    display: flex;
+    flex-wrap: wrap;
     margin: 10% auto;
     text-align: center;
     background: #3f5ad3;
@@ -25,6 +27,18 @@ main {
     border-radius: 10px;
     box-shadow: 5px 5px 10px #565656;
     color: white;
+}
+
+#start h1{
+    flex-shrink: 0;
+    width: 100%;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 3rem;
+}
+
+#gamestart{
+    flex-grow: 1;
 }
 
 #start input[type="text"] {
@@ -55,7 +69,6 @@ main {
 }
 
 #gameresult {
-    float: left;
     width: 40%;
     height: 100%;
     text-align: left;
