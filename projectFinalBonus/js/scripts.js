@@ -1,19 +1,48 @@
 var letters = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
 var questions = [];
 var games = [];
-var xhttp = new XMLHttpRequest();
-xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        var questionsDB = JSON.parse(this.responseText).questionDB;
-        for (var i = 0; i < letters.length; i++) {
-            questions[i] = questionsDB.filter(obj => {
-                return obj.letter === letters[i];
-            });
+var url = "https://raw.githubusercontent.com/Veenders/skylab-precurs/master/projectFinalBonus/json/questionDB.json";
+//"json/questionDB.json" //
+/*
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var questionsDB = JSON.parse(this.responseText).questionDB;
+            for (var i = 0; i < letters.length; i++) {
+                questions[i] = questionsDB.filter(obj => {
+                    return obj.letter === letters[i];
+                });
+            }
         }
+    };
+*/
+function getQuestionsDB() {
+    return new Promise(function(resolve, reject) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET", url, true);
+        xhttp.onload = function() {
+            if (xhttp.status == 200) {
+                resolve(JSON.parse(xhttp.response));
+            } else {
+                reject();
+            }
+        };
+        xhttp.send();
+    })
+
+}
+
+getQuestionsDB().then(r => {
+    var questionsDB = r.questionDB;
+    for (var i = 0; i < letters.length; i++) {
+        questions[i] = questionsDB.filter(obj => {
+            return obj.letter === letters[i];
+        });
     }
-};
-xhttp.open("GET", "json/questionDB.json", true);
-xhttp.send();
+}).catch(r => {
+    console.log(r);
+})
+
+
 
 function question(questionDB) {
     this.answer = questionDB.answer;
