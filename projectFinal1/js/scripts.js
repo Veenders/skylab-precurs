@@ -10,12 +10,11 @@ var op = false;
 function AddNumber(num) {
     if (result == pantalla.value && result != 0) {
         pantalla.value = 0;
-        //num1 = "";
     }
     var Content = pantalla.value;
     if (num != "." || num == "." && Content.indexOf('.') == -1) {
         if (Content.length <= maxnum) {
-            Content == 0 ? pantalla.value = num : pantalla.value = Content + num;
+            Content === "0" && num != "." ? pantalla.value = num : pantalla.value = Content + num;
         }
     }
 }
@@ -50,7 +49,6 @@ function Calculator(operator) {
     }
     operator != "=" ? op = true : op = false;
     operator != "=" ? operation = operator : num1 = "";
-    //console.log("result: "+result+" - num1: "+num1+" num2: "+num2+"- operator: "+operator+" op: "+op+" operation: "+operation+" testResult: "+functionByOperators[operation](10,2));
 }
 
 function LimpiarPantalla() {

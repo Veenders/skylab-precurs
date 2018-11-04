@@ -2,19 +2,7 @@ var letters = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
 var questions = [];
 var games = [];
 var url = "https://raw.githubusercontent.com/Veenders/skylab-precurs/master/projectFinalBonus/json/questionDB.json";
-//"json/questionDB.json" //
-/*
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            var questionsDB = JSON.parse(this.responseText).questionDB;
-            for (var i = 0; i < letters.length; i++) {
-                questions[i] = questionsDB.filter(obj => {
-                    return obj.letter === letters[i];
-                });
-            }
-        }
-    };
-*/
+
 function getQuestionsDB() {
     return new Promise(function(resolve, reject) {
         var xhttp = new XMLHttpRequest();
@@ -320,7 +308,6 @@ function keyStart(event) {
 }
 
 function keyTurn(event) {
-    console.log("Entra");
     switch (event.which) {
         case 13:
         case 32:
